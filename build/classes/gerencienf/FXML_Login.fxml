@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="480.0" style="-fx-background-color: white&#10;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gerencienf.FXML_LoginController">
+  <children>
+    <HBox alignment="CENTER" prefHeight="400.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox id="" alignment="CENTER" fillWidth="false" prefHeight="400.0" prefWidth="350.0" spacing="5.0">
+          <children>
+            <Label id="txtStatus" prefWidth="200.0" text="Usuário">
+              <font>
+                <Font size="14.0" fx:id="x1" />
+              </font>
+            </Label>
+            <TextField fx:id="txtUsuario" editable="true" prefWidth="200.0" promptText="Usuário" style="-fx-font-size: 14px;&#10;" />
+            <Label id="txtStatus" font="$x1" prefWidth="200.0" text="Senha" />
+            <PasswordField fx:id="txtSenha" prefWidth="200.0" promptText="Senha" style="-fx-font-size: 14px;" />
+            <Button fx:id="btnEntrar" font="$x1" mnemonicParsing="false" onAction="#handleButtonAction" text="Entrar" textAlignment="CENTER" wrapText="false" />
+            <Label fx:id="txtStatus" text="" />
+          </children>
+        </VBox>
+        <ImageView fitHeight="200.0" fitWidth="200.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" smooth="true">
+          <effect>
+            <DropShadow height="146.47341482979908" radius="72.73740132649738" width="146.47619047619045" />
+          </effect>
+          <image>
+            <Image url="@../img/GerenciENF.png" />
+          </image>
+        </ImageView>
+      </children>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+    </HBox>
+    <ImageView fx:id="imgStatus" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <image>
+        <Image url="@../img/off.png" />
+      </image>
+    </ImageView>
+  </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="690.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.FXML_AdicionarClienteController">
+  <children>
+    <VBox alignment="TOP_CENTER" fillWidth="true" prefHeight="680.0" prefWidth="690.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <TextField fx:id="txtNome" maxWidth="-Infinity" prefWidth="680.0" promptText="Nome Cliente *" style="-fx-background-color: red;&#10;-fx-background-radius: 5;&#10;-fx-font-size: 22;&#10;-fx-alignment: center;&#10;-fx-text-fill: white;&#10;-fx-font-weight: bold;" text="" />
+        <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="680.0" spacing="5.0">
+          <children>
+            <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;">
+              <children>
+                <Label id="txtEndereco" text="Endereço" textFill="WHITE" wrapText="true">
+                  <font>
+                    <Font name="System Bold" size="18.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <TextArea fx:id="txtEndereco" minHeight="-1.0" prefHeight="100.0" prefWidth="-1.0" promptText="Endereço" style="-fx-font-size: 16;" text="" wrapText="true" />
+                <Label id="txtEndereco" font="$x1" text="CPF" textFill="WHITE" />
+                <TextField fx:id="txtCpf" prefWidth="200.0" promptText="000.000.000-00" style="-fx-font-size: 20;&#10;-fx-alignment: center;" text="" />
+                <Label id="txtEndereco" font="$x1" text="Número" textFill="WHITE" />
+                <TextField fx:id="txtNumero" prefWidth="200.0" promptText="(00) 00000-0000" style="-fx-font-size: 20;&#10;-fx-alignment: center;" text="" />
+              </children>
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x3" />
+              </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;">
+              <children>
+                <Label id="txtEndereco" font="$x1" text="Sexo" textFill="WHITE" wrapText="true" />
+                <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+                  <children>
+                    <RadioButton fx:id="rbMasculino" mnemonicParsing="false" text="Masculino" textAlignment="LEFT" textFill="WHITE">
+                      <font>
+                        <Font name="System Bold" size="16.0" fx:id="x2" />
+                      </font>
+                    </RadioButton>
+                    <RadioButton fx:id="rbFeminino" font="$x2" mnemonicParsing="false" text="Feminino" textFill="WHITE" />
+                  </children>
+                </HBox>
+                <Label id="txtEndereco" font="$x1" text="Peso" textFill="WHITE" wrapText="true" />
+                <TextField id="txtCpf" fx:id="txtPeso" prefWidth="200.0" promptText="0.0" style="-fx-font-size: 20;&#10;-fx-alignment: center;" text="" />
+                <Label id="txtEndereco" font="$x1" text="Altura" textFill="WHITE" wrapText="true" />
+                <TextField id="txtCpf" fx:id="txtAltura" prefWidth="200.0" promptText="0.0" style="-fx-font-size: 20;&#10;-fx-alignment: center;" text="" />
+                <Label id="txtEndereco" font="$x1" text="Data Nascimento" textFill="WHITE" wrapText="true" />
+                <TextField id="txtCpf" fx:id="txtDataNascimento" prefWidth="200.0" promptText="00/00/0000" style="-fx-font-size: 20;&#10;-fx-alignment: center;" text="" />
+              </children>
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x3" />
+              </padding>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+          <children>
+            <HBox id="HBox" fx:id="hBoxConsulta" alignment="CENTER" disable="true" fillHeight="true" focusTraversable="false" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;&#10;-fx-cursor: hand;">
+              <children>
+                <Label id="txtEndereco" font="$x1" text="Consultar" textFill="WHITE" />
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../img/add_file.png" />
+                  </image>
+                </ImageView>
+              </children>
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x3" />
+              </padding>
+            </HBox>
+            <HBox id="HBox" fx:id="hBoxSalvar" alignment="CENTER" onMouseClicked="#cadastrar" padding="$x3" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;&#10;-fx-cursor: hand;">
+              <children>
+                <Label id="txtEndereco" font="$x1" text="Salvar" textFill="WHITE" />
+                <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#cadastrar" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../img/add_user.png" />
+                  </image>
+                </ImageView>
+              </children>
+            </HBox>
+          </children>
+        </HBox>
+        <ImageView fx:id="imgLogo" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../img/GerenciENF.png" />
+          </image>
+        </ImageView>
+      </children>
+      <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x3" />
+      </padding>
+    </VBox>
+  </children>
+</AnchorPane>

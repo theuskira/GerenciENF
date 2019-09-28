@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gerencienf.FXML_ConsultaController">
+  <children>
+    <SplitPane dividerPositions="0.7629107981220657" focusTraversable="true" prefHeight="700.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TabPane prefHeight="698.0" prefWidth="972.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab text="SAE">
+                  <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                        <ScrollPane prefHeight="667.0" prefWidth="972.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <VBox alignment="TOP_CENTER" prefHeight="967.0" prefWidth="970.0" spacing="5.0">
+                              <children>
+                                <Label style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="SISTEMATIZAÇÃO DA ASSISTÊNCIA DE ENFERMAGEM" textFill="WHITE">
+                                  <font>
+                                    <Font name="System Bold" size="20.0" fx:id="x3" />
+                                  </font>
+                                </Label>
+                                <HBox prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                  <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Histórico de Enfermagem - HE" textFill="WHITE" />
+                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Diagnóstico de Enfermagem - DE" textFill="WHITE" />
+                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                  </children>
+                                </HBox>
+                                <HBox prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                  <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Planejamento de Enfermagem - PE" textFill="WHITE" />
+                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Implementação de Enfermagem - IE" textFill="WHITE" />
+                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                  </children>
+                                </HBox>
+                                <HBox alignment="TOP_LEFT" prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                  <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Avaliação de Enfermagem - AE" textFill="WHITE" />
+                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                  </children>
+                                </HBox>
+                              </children>
+                              <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                              </padding>
+                            </VBox>
+                          </content>
+                        </ScrollPane>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Untitled Tab 2">
+                  <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+          </children>
+        </AnchorPane>
+        <AnchorPane maxWidth="-Infinity" minHeight="-1.0" minWidth="-Infinity" prefHeight="-1.0" prefWidth="300.0">
+          <children>
+            <VBox alignment="TOP_CENTER" padding="$x2" prefHeight="698.0" prefWidth="300.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <Label fx:id="txtNomeEnfermeiro" alignment="CENTER" maxWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Nome Enfermeiro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <font>
+                    <Font name="System Bold" size="18.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <VBox maxWidth="-Infinity" prefHeight="-1.0" prefWidth="290.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;">
+                  <children>
+                    <Label alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Cliente" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtNomeCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Cliente Nome" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtDataNascimentoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Idade: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtSexoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Sexo: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtPesoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Peso: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtAlturaCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Altura: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                  </padding>
+                </VBox>
+                <Label id="txtNomeEnfermeiro" fx:id="txtDataSistema" alignment="CENTER" font="$x1" maxWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="00/00/0000" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                <ImageView fx:id="imgLogo" fitHeight="290.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" rotate="0.0">
+                  <image>
+                    <Image url="@../img/GerenciENF.png" />
+                  </image>
+                </ImageView>
+              </children>
+            </VBox>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>

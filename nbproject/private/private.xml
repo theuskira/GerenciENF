@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/util/ThreadLogarUsuario.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>23</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/view/FXML_AdicionarClienteController.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/view/FXML_ClienteController.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/gerencienf/FXML_PrincipalController.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/model/bean/Clientes.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/model/dao/SaeDAO.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/gerencienf/FXML_Consulta.fxml</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/view/FXML_ClientesController.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/model/dao/ClientesDAO.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/util/Atual.java</file>
+            <file>file:/C:/Users/Matheus%20-%20DELL/Documents/NetBeansProjects/GerenciENF/src/gerencienf/FXML_ConsultaController.java</file>
+        </group>
+    </open-files>
+</project-private>
