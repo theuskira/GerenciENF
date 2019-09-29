@@ -99,7 +99,7 @@
                           </children>
                         </VBox>
                         <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Solicito:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="47.0" />
-                        <TextArea minHeight="-1.0" prefWidth="-1.0" promptText="Solicito ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" text="" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="89.0" />
+                        <TextArea fx:id="txtSolicitacao" minHeight="-1.0" prefWidth="-1.0" promptText="Solicito ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" text="" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="89.0" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -115,20 +115,20 @@
                         </VBox>
                         <HBox alignment="CENTER" prefHeight="346.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="47.0">
                           <children>
-                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;&#10;-fx-cursor: hand;">
+                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
-                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="100.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Antes" textAlignment="CENTER" textFill="WHITE" />
-                                <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="">
+                                <TextField fx:id="txtEvolucaoData1" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
+                                <ImageView id="imgEvolucaoAntes" fx:id="imgEvolucao1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
                                   <image>
                                     <Image url="@../img/image_red.png" />
                                   </image>
                                 </ImageView>
                               </children>
                             </VBox>
-                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;&#10;-fx-cursor: hand;">
+                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
-                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="100.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Atual" textAlignment="CENTER" textFill="WHITE" />
-                                <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                <TextField fx:id="txtEvolucaoData2" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
+                                <ImageView id="imgEvolucaoAtual" fx:id="imgEvolucao2" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
                                   <image>
                                     <Image url="@../img/image_red.png" />
                                   </image>
@@ -138,7 +138,7 @@
                           </children>
                         </HBox>
                         <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Evolução:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="398.0" />
-                        <TextArea prefWidth="-1.0" promptText="Evolução ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="440.0" />
+                        <TextArea fx:id="txtEvolucao" prefWidth="-1.0" promptText="Evolução ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="440.0" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -157,7 +157,7 @@
                             <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
                               <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Tipo:" textAlignment="CENTER" textFill="WHITE" />
-                                <TextArea prefWidth="400.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                                <TextArea fx:id="txtRetornoTipo" prefWidth="400.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                               </children>
                             </VBox>
                             <VBox alignment="TOP_CENTER" padding="$x2" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
@@ -165,16 +165,12 @@
                                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Retorno" textAlignment="CENTER" textFill="WHITE" />
                                 <Label text="Data">
                                   <font>
-                                    <Font size="16.0" />
+                                    <Font size="16.0" fx:id="x4" />
                                   </font>
                                 </Label>
-                                <TextField alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
-                                <Label text="Hora">
-                                  <font>
-                                    <Font size="12.0" />
-                                  </font>
-                                </Label>
-                                <TextField alignment="CENTER" prefWidth="-1.0" promptText="00:00" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
+                                <TextField fx:id="txtRetornoData" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
+                                <Label font="$x4" text="Hora" />
+                                <TextField fx:id="txtRetornoHora" alignment="CENTER" prefWidth="-1.0" promptText="00:00" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
                               </children>
                             </VBox>
                           </children>
@@ -184,7 +180,7 @@
                             <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Procedimento:" textAlignment="CENTER" textFill="WHITE" />
-                                <TextArea prefWidth="465.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                                <TextArea fx:id="txtRetornoProcedimento" prefWidth="465.0" promptText="Procedimento..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                               </children>
                               <padding>
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -192,8 +188,8 @@
                             </VBox>
                             <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
-                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Procedimento:" textAlignment="CENTER" textFill="WHITE" />
-                                <TextArea prefWidth="465.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Motivo:" textAlignment="CENTER" textFill="WHITE" />
+                                <TextArea fx:id="txtRetornoMotivo" prefWidth="465.0" promptText="Motivo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                               </children>
                               <padding>
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -201,6 +197,70 @@
                             </VBox>
                           </children>
                         </HBox>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="SALVAR">
+                  <content>
+                    <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                      <children>
+                        <VBox alignment="CENTER" prefHeight="37.0" prefWidth="-1.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="SALVAR" textAlignment="CENTER" textFill="WHITE" />
+                          </children>
+                        </VBox>
+                        <VBox alignment="CENTER" fillWidth="false" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0">
+                          <children>
+                            <VBox alignment="CENTER" fillWidth="true" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Senha" textAlignment="CENTER" textFill="WHITE" />
+                                <PasswordField fx:id="txtSenha" prefWidth="200.0" promptText="Senha" style="-fx-font-size: 16;" />
+                              </children>
+                              <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                            </VBox>
+                            <HBox alignment="TOP_CENTER" fillHeight="true" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+                              <children>
+                                <HBox fx:id="hBoxSalvar" alignment="CENTER" disable="true" fillHeight="false" opacity="0.5" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-cursor: hand;">
+                                  <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="" text="SALVAR" textAlignment="CENTER" textFill="WHITE" />
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                        <Image url="@../img/add_file.png" />
+                                      </image>
+                                    </ImageView>
+                                  </children>
+                                  <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                  </padding>
+                                </HBox>
+                                <HBox fx:id="hBoxImprimir" alignment="CENTER" disable="true" fillHeight="false" opacity="0.5" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-cursor: hand;">
+                                  <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="" text="IMPRIMIR" textAlignment="CENTER" textFill="WHITE" />
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                        <Image url="@../img/print.png" />
+                                      </image>
+                                    </ImageView>
+                                  </children>
+                                  <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                  </padding>
+                                </HBox>
+                              </children>
+                              <padding>
+                                <Insets fx:id="x2" />
+                              </padding>
+                            </HBox>
+                            <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                <Image url="@../img/GerenciENF.png" />
+                              </image>
+                            </ImageView>
+                          </children>
+                        </VBox>
                       </children>
                     </AnchorPane>
                   </content>

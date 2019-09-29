@@ -1,28 +1,41 @@
 package gerencienf;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import model.bean.Clientes;
+import model.bean.Evolucao;
+import model.bean.Retorno;
 import model.bean.Sae;
+import model.bean.Solicitacao;
 import model.bean.Usuario;
 import model.dao.SaeDAO;
 import util.Atual;
 import util.ThreadDataHora;
 import util.Util;
 import view.FXML_ClienteController;
+import view.FXML_ClientesController;
 
 /**
  * FXML Controller class
@@ -61,17 +74,8 @@ public class FXML_ConsultaController implements Initializable {
     private AnchorPane apCorpo;
     @FXML
     private VBox vbSae;
-    
-    
-    
-    /**
-     * Initializes the controller class.
-     */
-    private Usuario usuario;
-    private Clientes cliente;
-    private Sae sae;
     @FXML
-    private Insets x4;
+    private Font x4;
     @FXML
     private TextArea txtSaeHE;
     @FXML
@@ -82,6 +86,45 @@ public class FXML_ConsultaController implements Initializable {
     private TextArea txtSaeIE;
     @FXML
     private TextArea txtSaeAE;
+    @FXML
+    private TextArea txtSolicitacao;
+    @FXML
+    private TextArea txtEvolucao;
+    @FXML
+    private TextArea txtRetornoTipo;
+    @FXML
+    private TextField txtRetornoData;
+    @FXML
+    private TextField txtRetornoHora;
+    @FXML
+    private TextArea txtRetornoProcedimento;
+    @FXML
+    private TextArea txtRetornoMotivo;  
+    @FXML
+    private TextField txtEvolucaoData1;
+    @FXML
+    private TextField txtEvolucaoData2;
+    @FXML
+    private PasswordField txtSenha;
+    @FXML
+    private HBox hBoxSalvar;
+    @FXML
+    private HBox hBoxImprimir;
+    @FXML
+    private ImageView imgEvolucao1;
+    @FXML
+    private ImageView imgEvolucao2;
+    
+    
+    /**
+     * Initializes the controller class.
+     */
+    private Usuario usuario;
+    private Clientes cliente;
+    private Sae sae;
+    private Solicitacao solicitacao;
+    private Evolucao evolucao;
+    private Retorno retorno;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -99,8 +142,29 @@ public class FXML_ConsultaController implements Initializable {
         if(Atual.isVerConsulta()){
             System.out.println("~~ Visualizar Consulta ~~");
             inserirCampos();
+            hBoxSalvar.setDisable(true);
+            hBoxSalvar.setOpacity(0.5);
+            hBoxImprimir.setDisable(false);
+            hBoxImprimir.setOpacity(1.0);
         }else{
             System.out.println("~~ Nova Consulta ~~");
+            hBoxSalvar.setDisable(false);
+            hBoxSalvar.setOpacity(1.0);
+            hBoxImprimir.setDisable(true);
+            hBoxImprimir.setOpacity(0.5);
+            
+            imgEvolucao1.setOnMouseClicked(k -> {
+            
+                abrirFile(imgEvolucao1);
+            
+            });
+            
+            imgEvolucao2.setOnMouseClicked(k -> {
+            
+                abrirFile(imgEvolucao2);
+            
+            });
+            
         }
         
     }
@@ -166,28 +230,28 @@ public class FXML_ConsultaController implements Initializable {
             }
             
             // SAE - DIAGNOSTICO DE ENFERMAGEM
-            if(sae.getDiagnostico()!= null && !sae.getDiagnostico().isEmpty()){
+            if(sae.getDiagnostico() != null && !sae.getDiagnostico().isEmpty()){
                 
                 txtSaeDE.setText(sae.getDiagnostico());
                 
             }
             
             // SAE - PLANEJAMENTO DE ENFERMAGEM
-            if(sae.getPlanejamento()!= null && !sae.getPlanejamento().isEmpty()){
+            if(sae.getPlanejamento() != null && !sae.getPlanejamento().isEmpty()){
                 
                 txtSaePE.setText(sae.getPlanejamento());
                 
             }
             
             // SAE - IMPLEMENTACAO DE ENFERMAGEM
-            if(sae.getImplementacao()!= null && !sae.getImplementacao().isEmpty()){
+            if(sae.getImplementacao() != null && !sae.getImplementacao().isEmpty()){
                 
                 txtSaeIE.setText(sae.getImplementacao());
                 
             }
             
             // SAE - AVALIACAO DE ENFERMAGEM
-            if(sae.getAvalicacaoEvolucao()!= null && !sae.getAvalicacaoEvolucao().isEmpty()){
+            if(sae.getAvalicacaoEvolucao() != null && !sae.getAvalicacaoEvolucao().isEmpty()){
                 
                 txtSaeAE.setText(sae.getAvalicacaoEvolucao());
                 
@@ -201,6 +265,154 @@ public class FXML_ConsultaController implements Initializable {
         txtSaeIE.setEditable(false);
         txtSaeAE.setEditable(false);
         
+        // SOLICITACAO
+        solicitacao = new Solicitacao(Atual.getSolicitacao());
+        
+        if(solicitacao != null){
+            
+            System.out.println("-- SOLICITACAO NAO NULA --");
+            
+            // SOLICITACAO - SOLICITO
+            if(solicitacao.getSolicitacao() != null && !solicitacao.getSolicitacao().isEmpty()){
+                
+                txtSolicitacao.setText(solicitacao.getSolicitacao());
+                
+            }
+            
+        }
+        
+        txtSolicitacao.setEditable(false);
+        
+        // EVOLUCAO
+        evolucao = new Evolucao(Atual.getEvolucao());
+        
+        if(evolucao != null){
+            
+            System.out.println("-- EVOLUCAO NAO NULA --");
+            
+            // EVOLUCAO - EVOLUCAO
+            if(evolucao.getEvolucao() != null && !evolucao.getEvolucao().isEmpty()){
+                
+                txtEvolucao.setText(evolucao.getEvolucao());
+                
+            }
+            
+            // EVOLUCAO - FOTO 1
+            if(evolucao.getCaminhoFoto1() != null && !evolucao.getCaminhoFoto1().isEmpty()){
+                
+                imgEvolucao1.setImage(new Image("file:" + evolucao.getCaminhoFoto1()));
+                
+            }
+            
+            if(evolucao.getFoto1() != null && !evolucao.getFoto1().isEmpty()){
+                
+                txtEvolucaoData1.setText(evolucao.getFoto1());
+                
+            }
+            
+            // EVOLUCAO - FOTO 2
+            if(evolucao.getCaminhoFoto2() != null && !evolucao.getCaminhoFoto2().isEmpty()){
+                
+                imgEvolucao2.setImage(new Image("file:" + evolucao.getCaminhoFoto2()));
+                
+            }
+            
+            if(evolucao.getFoto2() != null && !evolucao.getFoto2().isEmpty()){
+                
+                txtEvolucaoData2.setText(evolucao.getFoto2());
+                
+            }
+            
+        }
+        
+        txtEvolucao.setEditable(false);
+        txtEvolucaoData1.setEditable(false);
+        txtEvolucaoData2.setEditable(false);
+        
+        // RETORNO
+        retorno = new Retorno(Atual.getRetorno());
+        
+        if(retorno != null){
+            
+            System.out.println("-- RETORNO NAO NULO --");
+            
+            // RETORNO - TIPO
+            if(retorno.getTipo() != null && !retorno.getTipo().isEmpty()){
+                
+                txtRetornoTipo.setText(retorno.getTipo());
+                
+            }
+            
+            // RETORNO - DATA
+            if(retorno.getDataRetorno() != null && !retorno.getDataRetorno().isEmpty()){
+                
+                txtRetornoData.setText(retorno.getDataRetorno());
+                
+            }
+            
+            // RETORNO - HORA
+            if(retorno.getHoraRetorno() != null && !retorno.getHoraRetorno().isEmpty()){
+                
+                txtRetornoHora.setText(retorno.getHoraRetorno());
+                
+            }
+            
+            // RETORNO - PROCEDIMENTO
+            if(retorno.getProcedimento() != null && !retorno.getProcedimento().isEmpty()){
+                
+                txtRetornoProcedimento.setText(retorno.getProcedimento());
+                
+            }
+            
+            // RETORNO - MOTIVO
+            if(retorno.getMotivo() != null && !retorno.getMotivo().isEmpty()){
+                
+                txtRetornoMotivo.setText(retorno.getMotivo());
+                
+            }
+            
+        }
+        
+        txtRetornoTipo.setEditable(false);
+        txtRetornoData.setEditable(false);
+        txtRetornoHora.setEditable(false);
+        txtRetornoProcedimento.setEditable(false);
+        txtRetornoMotivo.setEditable(false);
+        
+    }
+    
+    // ABRIR IMAGENS
+    private void abrirFile(ImageView imageView) {
+      
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Imagens", "*.png", "*.jpg", "*.jpeg"));
+        File selectedFile = fc.showOpenDialog(null);
+        
+        if(selectedFile != null){
+            
+            System.out.println("Arquivo Selecionado: " + selectedFile.getName());
+            System.out.println("Diretório do Arquivo: " + selectedFile.getPath());
+            //txtCaminhoLogo.setText(selectedFile.getPath());
+            
+            try {
+                
+                Image img = new Image("file:" + selectedFile.getPath());
+                
+                imageView.setImage(img);
+                
+            } catch (Exception e) {
+                
+                System.err.println("Erro ao pegar imagem: " + e.getMessage());
+            
+            }
+            
+        }else{
+            
+            System.err.println("Arquivo não é válido!");
+            
+        }
+        
+    
     }
     
 }

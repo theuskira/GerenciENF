@@ -7,7 +7,7 @@ package model.bean;
 public class Retorno {
     
     private int id, clienteId;
-    private String usuario, tipo, procedimento, motivo, dataRetorno, data;
+    private String usuario, tipo, procedimento, motivo, dataRetorno, horaRetorno, data;
 
     public Retorno() {
     }
@@ -85,6 +85,14 @@ public class Retorno {
 
     public void setDataRetorno(String dataRetorno) {
         this.dataRetorno = dataRetorno;
+    }
+
+    public String getHoraRetorno() {
+        return horaRetorno;
+    }
+
+    public void setHoraRetorno(String horaRetorno) {
+        this.horaRetorno = horaRetorno;
     }
     
     

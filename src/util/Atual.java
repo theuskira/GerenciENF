@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Clientes;
 import model.bean.Consulta;
+import model.bean.Evolucao;
+import model.bean.Retorno;
 import model.bean.Sae;
+import model.bean.Solicitacao;
 import model.bean.Usuario;
 
 /**
@@ -21,6 +24,9 @@ public class Atual {
     private static Consulta consulta;
     private static boolean verConsulta = false;
     private static Sae sae;
+    private static Solicitacao solicitacao;
+    private static Evolucao evolucao;
+    private static Retorno retorno;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -84,6 +90,30 @@ public class Atual {
 
     public static void setSae(Sae sae) {
         Atual.sae = sae;
+    }
+
+    public static Solicitacao getSolicitacao() {
+        return solicitacao;
+    }
+
+    public static void setSolicitacao(Solicitacao solicitacao) {
+        Atual.solicitacao = solicitacao;
+    }
+
+    public static Evolucao getEvolucao() {
+        return evolucao;
+    }
+
+    public static void setEvolucao(Evolucao evolucao) {
+        Atual.evolucao = evolucao;
+    }
+
+    public static Retorno getRetorno() {
+        return retorno;
+    }
+
+    public static void setRetorno(Retorno retorno) {
+        Atual.retorno = retorno;
     }
     
     
