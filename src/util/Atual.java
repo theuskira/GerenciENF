@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Clientes;
 import model.bean.Consulta;
+import model.bean.Sae;
 import model.bean.Usuario;
 
 /**
@@ -19,6 +20,7 @@ public class Atual {
     private static List<Clientes> listaClientes = new ArrayList<>();
     private static Consulta consulta;
     private static boolean verConsulta = false;
+    private static Sae sae;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -74,6 +76,14 @@ public class Atual {
 
     public static void setVerConsulta(boolean editarConsulta) {
         Atual.verConsulta = editarConsulta;
+    }
+
+    public static Sae getSae() {
+        return sae;
+    }
+
+    public static void setSae(Sae sae) {
+        Atual.sae = sae;
     }
     
     

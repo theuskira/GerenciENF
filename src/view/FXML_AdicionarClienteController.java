@@ -131,14 +131,18 @@ public class FXML_AdicionarClienteController implements Initializable {
                 
                 if(c.atualizar(cliente)){
                     hBoxSalvar.setDisable(true);
+                    hBoxSalvar.setOpacity(0.5);
                     hBoxConsulta.setDisable(false);
+                    hBoxConsulta.setOpacity(1.0);
                 }
                 
             }else{
                 
                 if(c.criar(cliente)){
                     hBoxSalvar.setDisable(true);
+                    hBoxSalvar.setOpacity(0.5);
                     hBoxConsulta.setDisable(false);
+                    hBoxConsulta.setOpacity(1.0);
                 }
                 
             }

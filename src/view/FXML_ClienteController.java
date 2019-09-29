@@ -85,6 +85,7 @@ public class FXML_ClienteController implements Initializable {
     }
     
     private void iniciarComponentes(MouseEvent event){
+        
         txtNome.setText(clienteSelecionado.getNome());
         txtCadasatro.setText("Cadastro: " + Util.formatarData(clienteSelecionado.getCadastro()));
         

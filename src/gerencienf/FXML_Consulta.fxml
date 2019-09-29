@@ -13,68 +13,74 @@
   <children>
     <SplitPane dividerPositions="0.7629107981220657" focusTraversable="true" prefHeight="700.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+        <AnchorPane fx:id="apCorpo" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
           <children>
-            <TabPane prefHeight="698.0" prefWidth="972.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TabPane prefHeight="-1.0" prefWidth="-1.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="100.0" tabMinHeight="30.0" tabMinWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <tabs>
                 <Tab text="SAE">
                   <content>
-                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane id="Content" fx:id="apSae" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="">
                       <children>
-                        <ScrollPane prefHeight="667.0" prefWidth="972.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane id="scrollSae" fx:id="spSae" prefHeight="-1.0" prefWidth="-1.0" style="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <VBox alignment="TOP_CENTER" prefHeight="967.0" prefWidth="970.0" spacing="5.0">
+                            <VBox fx:id="vbSae" alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
                               <children>
                                 <Label style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="SISTEMATIZAÇÃO DA ASSISTÊNCIA DE ENFERMAGEM" textFill="WHITE">
                                   <font>
-                                    <Font name="System Bold" size="20.0" fx:id="x3" />
+                                    <Font name="System Bold" size="20.0" fx:id="x1" />
                                   </font>
+                                  <VBox.margin>
+                                    <Insets right="12.5" />
+                                  </VBox.margin>
                                 </Label>
-                                <HBox prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                <HBox alignment="CENTER" prefHeight="300.0" prefWidth="960.0" spacing="5.0">
                                   <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
                                       <children>
-                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Histórico de Enfermagem - HE" textFill="WHITE" />
-                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                        <Label font="$x1" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Histórico de Enfermagem - HE" textFill="WHITE" />
+                                        <TextArea fx:id="txtSaeHE" prefHeight="258.0" prefWidth="-1.0" promptText="Histórico de Enfermagem" style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                                       </children>
                                     </VBox>
                                     <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
                                       <children>
-                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Diagnóstico de Enfermagem - DE" textFill="WHITE" />
-                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                        <Label font="$x1" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Diagnóstico de Enfermagem - DE" textFill="WHITE" />
+                                        <TextArea id="txtSaeDe" fx:id="txtSaeDE" prefHeight="258.0" prefWidth="-1.0" promptText="Diagnóstico de Enfermagem" style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                  </children>
+                                  <padding>
+                                    <Insets fx:id="x2" />
+                                  </padding>
+                                </HBox>
+                                <HBox alignment="CENTER" padding="$x2" prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                  <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x1" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Planejamento de Enfermagem - PE" textFill="WHITE" />
+                                        <TextArea fx:id="txtSaePE" prefHeight="258.0" prefWidth="-1.0" promptText="Planejamento de Enfermagem" style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                                      </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
+                                      <children>
+                                        <Label font="$x1" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Implementação de Enfermagem - IE" textFill="WHITE" />
+                                        <TextArea fx:id="txtSaeIE" prefHeight="258.0" prefWidth="-1.0" promptText="Implementação de Infermagem" style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                                       </children>
                                     </VBox>
                                   </children>
                                 </HBox>
-                                <HBox prefHeight="300.0" prefWidth="960.0" spacing="5.0">
+                                <HBox alignment="CENTER" padding="$x2" prefHeight="300.0" prefWidth="960.0" spacing="5.0">
                                   <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
                                       <children>
-                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Planejamento de Enfermagem - PE" textFill="WHITE" />
-                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
-                                      </children>
-                                    </VBox>
-                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
-                                      <children>
-                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Implementação de Enfermagem - IE" textFill="WHITE" />
-                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
-                                      </children>
-                                    </VBox>
-                                  </children>
-                                </HBox>
-                                <HBox alignment="TOP_LEFT" prefHeight="300.0" prefWidth="960.0" spacing="5.0">
-                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="471.75" spacing="5.0">
-                                      <children>
-                                        <Label font="$x3" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Avaliação de Enfermagem - AE" textFill="WHITE" />
-                                        <TextArea prefHeight="258.0" prefWidth="-1.0" wrapText="true" />
+                                        <Label font="$x1" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Avaliação de Enfermagem - AE" textFill="WHITE" />
+                                        <TextArea fx:id="txtSaeAE" prefHeight="258.0" prefWidth="-1.0" promptText="Avaliação de Enfermagem" style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
                                       </children>
                                     </VBox>
                                   </children>
                                 </HBox>
                               </children>
                               <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                               </padding>
                             </VBox>
                           </content>
@@ -83,9 +89,120 @@
                     </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Untitled Tab 2">
+                <Tab text="SOLICITAÇÃO">
                   <content>
-                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                      <children>
+                        <VBox alignment="CENTER" prefHeight="37.0" prefWidth="-1.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="140.0" prefWidth="140.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="SOLICITAÇÃO" textAlignment="CENTER" textFill="WHITE" />
+                          </children>
+                        </VBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Solicito:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="47.0" />
+                        <TextArea minHeight="-1.0" prefWidth="-1.0" promptText="Solicito ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" text="" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="89.0" />
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="EVOLUÇÃO">
+                  <content>
+                    <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                      <children>
+                        <VBox alignment="CENTER" prefHeight="37.0" prefWidth="962.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="EVOLUÇÃO" textAlignment="CENTER" textFill="WHITE" />
+                          </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="346.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="47.0">
+                          <children>
+                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;&#10;-fx-cursor: hand;">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="100.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Antes" textAlignment="CENTER" textFill="WHITE" />
+                                <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="">
+                                  <image>
+                                    <Image url="@../img/image_red.png" />
+                                  </image>
+                                </ImageView>
+                              </children>
+                            </VBox>
+                            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;&#10;-fx-cursor: hand;">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="100.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Atual" textAlignment="CENTER" textFill="WHITE" />
+                                <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@../img/image_red.png" />
+                                  </image>
+                                </ImageView>
+                              </children>
+                            </VBox>
+                          </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Evolução:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="398.0" />
+                        <TextArea prefWidth="-1.0" promptText="Evolução ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="440.0" />
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="RETORNO">
+                  <content>
+                    <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                      <children>
+                        <VBox alignment="CENTER" prefHeight="37.0" prefWidth="962.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="RETORNO" textAlignment="CENTER" textFill="WHITE" />
+                          </children>
+                        </VBox>
+                        <HBox alignment="TOP_CENTER" padding="$x2" prefHeight="200.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="47.0">
+                          <children>
+                            <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="100.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Tipo:" textAlignment="CENTER" textFill="WHITE" />
+                                <TextArea prefWidth="400.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                              </children>
+                            </VBox>
+                            <VBox alignment="TOP_CENTER" padding="$x2" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Retorno" textAlignment="CENTER" textFill="WHITE" />
+                                <Label text="Data">
+                                  <font>
+                                    <Font size="16.0" />
+                                  </font>
+                                </Label>
+                                <TextField alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
+                                <Label text="Hora">
+                                  <font>
+                                    <Font size="12.0" />
+                                  </font>
+                                </Label>
+                                <TextField alignment="CENTER" prefWidth="-1.0" promptText="00:00" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
+                              </children>
+                            </VBox>
+                          </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="272.0">
+                          <children>
+                            <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Procedimento:" textAlignment="CENTER" textFill="WHITE" />
+                                <TextArea prefWidth="465.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                              </children>
+                              <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                            </VBox>
+                            <VBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
+                              <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Procedimento:" textAlignment="CENTER" textFill="WHITE" />
+                                <TextArea prefWidth="465.0" promptText="Tipo..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" />
+                              </children>
+                              <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                            </VBox>
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
                   </content>
                 </Tab>
               </tabs>
@@ -94,24 +211,24 @@
         </AnchorPane>
         <AnchorPane maxWidth="-Infinity" minHeight="-1.0" minWidth="-Infinity" prefHeight="-1.0" prefWidth="300.0">
           <children>
-            <VBox alignment="TOP_CENTER" padding="$x2" prefHeight="698.0" prefWidth="300.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="TOP_CENTER" prefHeight="698.0" prefWidth="300.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <children>
-                <Label fx:id="txtNomeEnfermeiro" alignment="CENTER" maxWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Nome Enfermeiro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                  <font>
-                    <Font name="System Bold" size="18.0" fx:id="x1" />
-                  </font>
-                </Label>
+                <Label fx:id="txtNomeEnfermeiro" alignment="CENTER" font="$x1" maxWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Nome Enfermeiro" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                 <VBox maxWidth="-Infinity" prefHeight="-1.0" prefWidth="290.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;">
                   <children>
-                    <Label alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Cliente" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                    <Label fx:id="txtNomeCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Cliente Nome" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                    <Label fx:id="txtDataNascimentoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Idade: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                    <Label fx:id="txtSexoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Sexo: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                    <Label fx:id="txtPesoCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Peso: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                    <Label fx:id="txtAlturaCliente" alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Altura: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label alignment="CENTER" font="$x1" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="CLIENTE" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtNomeCliente" alignment="CENTER" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Cliente Nome" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                      <font>
+                        <Font name="System Bold" size="18.0" fx:id="x3" />
+                      </font>
+                    </Label>
+                    <Label fx:id="txtDataNascimentoCliente" alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Idade: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtSexoCliente" alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Sexo: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtPesoCliente" alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Peso: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                    <Label fx:id="txtAlturaCliente" alignment="CENTER" font="$x3" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;" text="Altura: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                   </children>
                   <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding>
                 </VBox>
                 <Label id="txtNomeEnfermeiro" fx:id="txtDataSistema" alignment="CENTER" font="$x1" maxWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="00/00/0000" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
@@ -121,6 +238,9 @@
                   </image>
                 </ImageView>
               </children>
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+              </padding>
             </VBox>
           </children>
         </AnchorPane>

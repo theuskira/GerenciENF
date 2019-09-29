@@ -7,7 +7,7 @@ package model.bean;
 public class Retorno {
     
     private int id, clienteId;
-    private String usuario, tipo, procedimento, motivo, data;
+    private String usuario, tipo, procedimento, motivo, dataRetorno, data;
 
     public Retorno() {
     }
@@ -19,6 +19,7 @@ public class Retorno {
         this.tipo = retorno.getTipo();
         this.procedimento = retorno.getProcedimento();
         this.motivo = retorno.getMotivo();
+        this.dataRetorno = retorno.getDataRetorno();
         this.data = retorno.getData();
     }
     
@@ -76,6 +77,14 @@ public class Retorno {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getDataRetorno() {
+        return dataRetorno;
+    }
+
+    public void setDataRetorno(String dataRetorno) {
+        this.dataRetorno = dataRetorno;
     }
     
     

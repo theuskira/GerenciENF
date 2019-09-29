@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
+import model.dao.ConsultasDAO;
 import util.Atual;
 import util.ThreadDataHora;
 
@@ -70,6 +71,16 @@ public class FXML_HomeController implements Initializable {
         txtNomeEnfermeiro.setText(Atual.getUsuario().getNome());
         //txtDataHora.setText(Util.getDateTime());
         new ThreadDataHora(txtDataHora);
+        
+        // ConsultasDAO
+        ConsultasDAO consultasDAO = new ConsultasDAO();
+        int totalConsultas = consultasDAO.listarConsultasUsuario(Atual.getUsuario()).size();
+        
+        txtTotalConsultasEnf.setText(
+            "Consultas realizadas: " 
+            + totalConsultas
+        );
+        
     }
     
 }

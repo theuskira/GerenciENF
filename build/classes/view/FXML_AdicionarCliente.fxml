@@ -61,7 +61,7 @@
         </HBox>
         <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
           <children>
-            <HBox id="HBox" fx:id="hBoxConsulta" alignment="CENTER" disable="true" fillHeight="true" focusTraversable="false" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;&#10;-fx-cursor: hand;">
+            <HBox id="HBox" fx:id="hBoxConsulta" alignment="CENTER" disable="true" fillHeight="true" focusTraversable="false" opacity="0.5" prefWidth="338.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5;&#10;-fx-cursor: hand;">
               <children>
                 <Label id="txtEndereco" font="$x1" text="Consultar" textFill="WHITE" />
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
