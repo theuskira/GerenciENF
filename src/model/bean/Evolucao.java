@@ -6,14 +6,16 @@ package model.bean;
  */
 public class Evolucao {
     
-    private int saeId;
-    private String data, foto1, caminhoFoto1, foto2, caminhoFoto2, evolucao;
+    private int id, clienteId;
+    private String usuarioId, data, foto1, caminhoFoto1, foto2, caminhoFoto2, evolucao;
 
     public Evolucao() {
     }
 
     public Evolucao(Evolucao evolucao) {
-        this.saeId = evolucao.getSaeId();
+        this.id = evolucao.getId();
+        this.usuarioId = evolucao.getUsuarioId();
+        this.clienteId = evolucao.getClienteId();
         this.data = evolucao.getData();
         this.foto1 = evolucao.getFoto1();
         this.caminhoFoto1 = evolucao.getCaminhoFoto1();
@@ -22,14 +24,30 @@ public class Evolucao {
         this.evolucao = evolucao.getEvolucao();
     }
 
-    public int getSaeId() {
-        return saeId;
+    public int getId() {
+        return id;
     }
 
-    public void setSaeId(int saeId) {
-        this.saeId = saeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    public int getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public String getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+    
     public String getData() {
         return data;
     }

@@ -21,27 +21,32 @@ public class ConsultasDAO {
     private Connection con = Conexao.getConnection();
     private PreparedStatement stmt = null;
     
-    public void criar(Consulta consulta){
+    public boolean criar(Consulta consulta){
         
         System.out.println("** CRIAR CONSULTA **");
+        
+         boolean retorno = false;
         
         try {
             
             stmt = con.prepareStatement("INSERT INTO"
                     + " consulta "
-                    + "(usuario, retornoId, clienteId, saeId) "
+                    + "(usuario, clienteId, saeId, solicitacaoId, evolucaoId, retornoId) "
                     + "VALUES "
-                    + "(?, ?, ?, ?);");
+                    + "(?, ?, ?, ?, ?, ?);");
             
             stmt.setString(1, consulta.getUsuario());
-            stmt.setInt(2, consulta.getRetornoId());
-            stmt.setInt(3, consulta.getClienteId());
-            stmt.setInt(4, consulta.getSaeId());
+            stmt.setInt(2, consulta.getClienteId());
+            stmt.setInt(3, consulta.getSaeId());
+            stmt.setInt(4, consulta.getSolicitacaoId());
+            stmt.setInt(5, consulta.getEvolucaoId());
+            stmt.setInt(6, consulta.getRetornoId());
             
             stmt.executeUpdate();
             
-            new ThreadDialog("Consulta cadastrada!");
             System.out.println("Consulta cadastrada!");
+            
+            retorno = true;
             
         } catch (SQLException e) {
             
@@ -53,6 +58,8 @@ public class ConsultasDAO {
             Conexao.closeConnection(con, stmt);
             
         }
+        
+        return retorno;
         
     }
     
@@ -73,10 +80,12 @@ public class ConsultasDAO {
                 
                 Consulta consulta = new Consulta();
                 
+                consulta.setId(rs.getInt("id"));
                 consulta.setUsuario(rs.getString("usuario"));
                 consulta.setRetornoId(rs.getInt("retornoId"));
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
+                consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
                 consulta.setData(rs.getString("data"));
                 
                 System.out.println("* Consulta encontrada!");
@@ -120,10 +129,12 @@ public class ConsultasDAO {
                 
                 Consulta consulta = new Consulta();
                 
+                consulta.setId(rs.getInt("id"));
                 consulta.setUsuario(rs.getString("usuario"));
                 consulta.setRetornoId(rs.getInt("retornoId"));
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
+                consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
                 consulta.setData(rs.getString("data"));
                 
                 System.out.println("* Consulta encontrada!");
@@ -167,10 +178,12 @@ public class ConsultasDAO {
                 
                 Consulta consulta = new Consulta();
                 
+                consulta.setId(rs.getInt("id"));
                 consulta.setUsuario(rs.getString("usuario"));
                 consulta.setRetornoId(rs.getInt("retornoId"));
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
+                consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
                 consulta.setData(rs.getString("data"));
                 
                 System.out.println("* Consulta encontrada!");

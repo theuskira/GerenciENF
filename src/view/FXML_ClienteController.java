@@ -14,9 +14,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import model.bean.Clientes;
-import model.dao.ClientesDAO;
 import model.dao.ConsultasDAO;
 import util.Atual;
+import util.ThreadDialog;
 import util.ThreadIniciar;
 import util.Util;
 
@@ -71,6 +71,8 @@ public class FXML_ClienteController implements Initializable {
      * Initializes the controller class.
      */
     private Clientes clienteSelecionado;
+    @FXML
+    private Font x3;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -80,11 +82,11 @@ public class FXML_ClienteController implements Initializable {
         clienteSelecionado = new Clientes(Atual.getCliente());
         System.out.println("CLIENTE SELECIONADO: " + clienteSelecionado.getNome());
   
-        iniciarComponentes(null);
+        iniciarComponentes();
 
     }
     
-    private void iniciarComponentes(MouseEvent event){
+    private void iniciarComponentes(){
         
         txtNome.setText(clienteSelecionado.getNome());
         txtCadasatro.setText("Cadastro: " + Util.formatarData(clienteSelecionado.getCadastro()));
@@ -101,6 +103,10 @@ public class FXML_ClienteController implements Initializable {
             txtNumero.setText(clienteSelecionado.getNumero());
         }
         
+        if(clienteSelecionado.getSexo() != null){
+            txtSexo.setText("Sexo: " + clienteSelecionado.getSexo());
+        }
+        
         if(clienteSelecionado.getDataNascimento() != null){
             try {
                 txtIdade.setText(
@@ -109,13 +115,10 @@ public class FXML_ClienteController implements Initializable {
                         + Util.calculaIdade(clienteSelecionado.getDataNascimento())
                         + " Anos)"
                 );
-            } catch (ParseException ex) {
-                Logger.getLogger(FXML_ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException e) {
+                System.err.println("Erro: " + e.getMessage());
+                new ThreadDialog("Erro: " + e.getMessage());
             }
-        }
-        
-        if(clienteSelecionado.getSexo() != null){
-            txtSexo.setText("Sexo: " + clienteSelecionado.getSexo());
         }
         
         if(clienteSelecionado.getPeso() != null && clienteSelecionado.getPeso() > 0){
@@ -143,8 +146,8 @@ public class FXML_ClienteController implements Initializable {
         
         if(totalConsultas > 0){
             txtUltimaConsulta.setText(
-                "Ultima de consulta: " 
-                + new ConsultasDAO().listarConsultasCliente(clienteSelecionado).get(totalConsultas).getData()
+                "Ultima consulta: " 
+                + Util.formatarData(new ConsultasDAO().listarConsultasCliente(clienteSelecionado).get(totalConsultas-1).getData())
             );
         }
         

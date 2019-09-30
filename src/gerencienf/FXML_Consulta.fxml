@@ -113,32 +113,56 @@
                             <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="EVOLUÇÃO" textAlignment="CENTER" textFill="WHITE" />
                           </children>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="346.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="47.0">
+                        <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="47.0">
                           <children>
                             <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
-                                <TextField fx:id="txtEvolucaoData1" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
-                                <ImageView id="imgEvolucaoAntes" fx:id="imgEvolucao1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
+                                <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+                                  <children>
+                                    <TextField fx:id="txtEvolucaoData1" alignment="CENTER" prefWidth="263.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
+                                    <ImageView id="img" fx:id="imgRemoverEvoucao1" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                      <image>
+                                        <Image url="@../img/cancel_color.png" />
+                                      </image>
+                                    </ImageView>
+                                  </children>
+                                </HBox>
+                                <ImageView id="imgEvolucaoAntes" fx:id="imgEvolucao1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                                   <image>
                                     <Image url="@../img/image_red.png" />
                                   </image>
                                 </ImageView>
+                                <Label fx:id="txtEvolucaoCaminhoFoto1" alignment="CENTER" maxWidth="300.0" prefWidth="300.0" text="" textAlignment="CENTER" textFill="RED" textOverrun="LEADING_ELLIPSIS">
+                                  <font>
+                                    <Font name="Consolas" size="12.0" fx:id="x5" />
+                                  </font>
+                                </Label>
                               </children>
                             </VBox>
                             <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
                               <children>
-                                <TextField fx:id="txtEvolucaoData2" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
+                                <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+                                  <children>
+                                    <TextField fx:id="txtEvolucaoData2" alignment="CENTER" prefWidth="263.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" />
+                                    <ImageView id="imgRemoverEvoucao1" fx:id="imgRemoverEvoucao2" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                      <image>
+                                        <Image url="@../img/cancel_color.png" />
+                                      </image>
+                                    </ImageView>
+                                  </children>
+                                </HBox>
                                 <ImageView id="imgEvolucaoAtual" fx:id="imgEvolucao2" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
                                   <image>
                                     <Image url="@../img/image_red.png" />
                                   </image>
                                 </ImageView>
+                                <Label fx:id="txtEvolucaoCaminhoFoto2" alignment="CENTER" font="$x5" maxWidth="300.0" prefWidth="300.0" text="" textAlignment="CENTER" textFill="RED" textOverrun="LEADING_ELLIPSIS" />
                               </children>
                             </VBox>
                           </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Evolução:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="398.0" />
-                        <TextArea fx:id="txtEvolucao" prefWidth="-1.0" promptText="Evolução ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="440.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Evolução:" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="371.0" />
+                        <TextArea fx:id="txtEvolucao" prefWidth="-1.0" promptText="Evolução ..." style="-fx-font-size: 16;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="413.0" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -163,13 +187,13 @@
                             <VBox alignment="TOP_CENTER" padding="$x2" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="">
                               <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-1.0" prefWidth="-1.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Retorno" textAlignment="CENTER" textFill="WHITE" />
-                                <Label text="Data">
+                                <Label text="Data" textFill="RED">
                                   <font>
                                     <Font size="16.0" fx:id="x4" />
                                   </font>
                                 </Label>
                                 <TextField fx:id="txtRetornoData" alignment="CENTER" prefWidth="-1.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
-                                <Label font="$x4" text="Hora" />
+                                <Label font="$x4" text="Hora" textFill="RED" />
                                 <TextField fx:id="txtRetornoHora" alignment="CENTER" prefWidth="-1.0" promptText="00:00" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: white;&#10;-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="" />
                               </children>
                             </VBox>

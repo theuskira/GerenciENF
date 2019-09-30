@@ -6,18 +6,29 @@ package model.bean;
  */
 public class Consulta {
     
-    private int retornoId, clienteId, saeId;
+    private int id, retornoId, clienteId, saeId, solicitacaoId, evolucaoId;
     private String usuario, data;
 
     public Consulta() {
     }
 
     public Consulta(Consulta consulta) {
+        this.id = consulta.getId();
         this.retornoId = consulta.getRetornoId();
         this.clienteId = consulta.getClienteId();
         this.saeId = consulta.getSaeId();
+        this.solicitacaoId = consulta.getSolicitacaoId();
+        this.evolucaoId = consulta.getEvolucaoId();
         this.usuario = consulta.getUsuario();
         this.data = consulta.getData();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public int getRetornoId() {
@@ -59,5 +70,23 @@ public class Consulta {
     public void setData(String data) {
         this.data = data;
     }
+
+    public int getSolicitacaoId() {
+        return solicitacaoId;
+    }
+
+    public void setSolicitacaoId(int solicitacaoId) {
+        this.solicitacaoId = solicitacaoId;
+    }
+
+    public int getEvolucaoId() {
+        return evolucaoId;
+    }
+
+    public void setEvolucaoId(int evolucaoId) {
+        this.evolucaoId = evolucaoId;
+    }
+    
+    
     
 }

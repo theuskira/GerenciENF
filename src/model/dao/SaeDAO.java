@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.Clientes;
+import model.bean.Consulta;
 import model.bean.Sae;
 import util.ThreadDialog;
 
@@ -31,7 +32,7 @@ public class SaeDAO {
             stmt = con.prepareStatement("INSERT INTO"
                     + " sae "
                     + "(usuario, clienteId, historico, diagnostico, "
-                    + "planejaento, implementacao, avaliacaoEvolucao) "
+                    + "planejamento, implementacao, avaliacaoEvolucao) "
                     + "VALUES "
                     + "(?, ?, ?, ?, ?, ?, ?);");
             
@@ -45,7 +46,6 @@ public class SaeDAO {
             
             stmt.executeUpdate();
             
-            new ThreadDialog("(SAE) cadastrada!");
             System.out.println("Sistematização da Assistência de Enfermagem (SAE) cadastrada!");
             
             retorno = true;
@@ -100,8 +100,8 @@ public class SaeDAO {
             
         } catch (SQLException e) {
             
-            new ThreadDialog("Erro ao Listar a (SAE): " + e.getMessage());
-            System.err.println("Erro ao Listar a (SAE): " + e.getMessage());
+            new ThreadDialog("Erro ao Listar as (SAE)'s: " + e.getMessage());
+            System.err.println("Erro ao Listar as (SAE)'s: " + e.getMessage());
             
         }finally{
             
@@ -109,7 +109,7 @@ public class SaeDAO {
             
         }
         
-        System.out.println(listaSae.size() + " (SAE) encontrada(s)!");
+        System.out.println(listaSae.size() + " (SAE)'s encontrada(s)!");
         
         return listaSae;
         
@@ -140,7 +140,7 @@ public class SaeDAO {
                 sae.setDiagnostico(rs.getString("diagnostico"));
                 sae.setPlanejamento(rs.getString("planejamento"));
                 sae.setImplementacao(rs.getString("implementacao"));
-                sae.setAvalicacaoEvolucao(rs.getString("avalicacaoEvolucao"));
+                sae.setAvalicacaoEvolucao(rs.getString("avaliacaoEvolucao"));
                 sae.setData(rs.getString("data"));
                 
                 System.out.println("* (SAE) encontrada: " + sae.getId());
@@ -151,8 +151,8 @@ public class SaeDAO {
             
         } catch (SQLException e) {
             
-            new ThreadDialog("Erro ao Listar a (SAE): " + e.getMessage());
-            System.err.println("Erro ao Listar a (SAE): " + e.getMessage());
+            new ThreadDialog("Erro ao Listar as (SAE)'s: " + e.getMessage());
+            System.err.println("Erro ao Listar as (SAE)'s: " + e.getMessage());
             
         }finally{
             
@@ -160,9 +160,48 @@ public class SaeDAO {
             
         }
         
-        System.out.println(listaSae.size() + " (SAE) encontrada(s)!");
+        System.out.println(listaSae.size() + " (SAE)'s encontrada(s)!");
         
         return listaSae;
+        
+    }
+    
+    public Sae saePorConsulta(Consulta consulta){
+        
+        System.out.println("** SAE POR CONSULTA **");
+        
+        ResultSet rs = null;
+        
+        Sae sae = new Sae();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM sae WHERE id = ?");
+            stmt.setInt(1, consulta.getSaeId());
+            rs = stmt.executeQuery();
+
+            sae.setId(rs.getInt("id"));
+            sae.setUsuario(rs.getString("usuario"));
+            sae.setClienteId(rs.getInt("clienteId"));
+            sae.setHistorico(rs.getString("historico"));
+            sae.setDiagnostico(rs.getString("diagnostico"));
+            sae.setPlanejamento(rs.getString("planejamento"));
+            sae.setImplementacao(rs.getString("implementacao"));
+            sae.setAvalicacaoEvolucao(rs.getString("avaliacaoEvolucao"));
+            sae.setData(rs.getString("data"));
+
+        } catch (SQLException e) {
+            
+            new ThreadDialog("Erro ao recuperar a (SAE): " + e.getMessage());
+            System.err.println("Erro ao recuperar a (SAE): " + e.getMessage());
+            
+        }finally{
+            
+            Conexao.closeConnection(con, stmt, rs);
+            
+        }
+        
+        return sae;
         
     }
     

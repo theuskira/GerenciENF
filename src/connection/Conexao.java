@@ -28,7 +28,7 @@ public class Conexao {
             
         }catch(SQLException | ClassNotFoundException e){
             
-            System.out.println("Erro: " + e.getMessage());
+            System.err.println("Erro: " + e.getMessage());
             new ThreadDialog("Erro: " + e.getMessage());
             return null;
             
@@ -46,7 +46,7 @@ public class Conexao {
                 
             } catch (SQLException e) {
                 
-                System.out.println("Erro: " + e.getMessage());
+                System.err.println("Erro: " + e.getMessage());
                 new ThreadDialog("Erro: " + e.getMessage());
                 
             }
@@ -67,7 +67,7 @@ public class Conexao {
                 
             } catch (SQLException e) {
                 
-                System.out.println("Erro: " + e.getMessage());
+                System.err.println("Erro: " + e.getMessage());
                 new ThreadDialog("Erro: " + e.getMessage());
                 
             }
@@ -88,7 +88,7 @@ public class Conexao {
                 
             } catch (SQLException e) {
                 
-                System.out.println("Erro: " + e.getMessage());
+                System.err.println("Erro: " + e.getMessage());
                 new ThreadDialog("Erro: " + e.getMessage());
                 
             }

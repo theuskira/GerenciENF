@@ -74,8 +74,9 @@ public class FXML_ClientesController implements Initializable {
  
         try {
             iniciarAnchor((AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_AdicionarCliente.fxml")));
-        } catch (IOException ex) {
-            Logger.getLogger(FXML_ClientesController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            new ThreadDialog("Erro: " + e.getMessage());
+            System.err.println("Erro: " + e.getMessage());
         }
         
         imgAddClientes.setOnMouseClicked(k -> {
@@ -83,8 +84,9 @@ public class FXML_ClientesController implements Initializable {
             try {
                 Atual.setEditarCliente(false);
                 iniciarAnchor((AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_AdicionarCliente.fxml")));
-            } catch (IOException ex) {
-                Logger.getLogger(FXML_ClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e) {
+                new ThreadDialog("Erro: " + e.getMessage());
+                System.err.println("Erro: " + e.getMessage());
             }
             
         });
@@ -151,7 +153,10 @@ public class FXML_ClientesController implements Initializable {
         try {
             
             Atual.setCliente(listaClientes().get(tabelaClientes.getSelectionModel().getFocusedIndex()));
-            iniciarAnchor((AnchorPane) FXMLLoader.load(getClass().getResource("FXML_Cliente.fxml")));
+            
+            AnchorPane ap = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Cliente.fxml"));
+            
+            iniciarAnchor(ap);
             
         } catch (IOException e) {
             
