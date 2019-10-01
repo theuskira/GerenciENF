@@ -1,17 +1,13 @@
 package gerencienf;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -43,7 +39,6 @@ import util.ThreadDataHora;
 import util.ThreadDialog;
 import util.Util;
 import view.FXML_ClienteController;
-import view.FXML_ClientesController;
 
 /**
  * FXML Controller class
@@ -168,6 +163,7 @@ public class FXML_ConsultaController implements Initializable {
             
             System.out.println("~~ Nova Consulta ~~");
             iniciarNovaConsulta();
+            new ThreadDataHora(txtDataSistema);
             
         }
         
@@ -178,8 +174,6 @@ public class FXML_ConsultaController implements Initializable {
         // SETAR LARGURA PARA A MESMA DO ANCHORPANE PRINCIPAL
         vbSae.prefWidthProperty().bind(apSae.widthProperty());
         //spSae.prefWidthProperty().bind(apSae.widthProperty());
-        
-        new ThreadDataHora(txtDataSistema);
         
     }
     
@@ -285,10 +279,14 @@ public class FXML_ConsultaController implements Initializable {
         
         consulta = new Consulta(Atual.getConsulta());
         
+        System.out.println("-- Consulta ID: " + consulta.getId());
+        
         hBoxSalvar.setDisable(true);
         hBoxSalvar.setOpacity(0.5);
         hBoxImprimir.setDisable(false);
         hBoxImprimir.setOpacity(1.0);
+        
+        txtDataSistema.setText(Util.formatarData(consulta.getData()));
         
         // SISTEMATIZAÇÃO DA ASSISTÊNCIA DE ENFERMAGEM (SAE)
         if(consulta.getSaeId() > 0){
@@ -382,7 +380,7 @@ public class FXML_ConsultaController implements Initializable {
             if(evolucao.getCaminhoFoto1() != null && !evolucao.getCaminhoFoto1().isEmpty()){
                 
                 imgEvolucao1.setImage(new Image("file:" + evolucao.getCaminhoFoto1()));
-                 txtEvolucaoCaminhoFoto1.setText(evolucao.getCaminhoFoto1());
+                txtEvolucaoCaminhoFoto1.setText(evolucao.getCaminhoFoto1());
                 
             }
             
@@ -558,11 +556,6 @@ public class FXML_ConsultaController implements Initializable {
             System.out.println("~~ SAE NAO NULA ~~");
             
             // CADASTRAR SAE
-            Thread t = new Thread(){
-
-                @Override
-                public void run() {
-
                     if(new SaeDAO().criar(saeCad)){
                         
                         int t = new SaeDAO().listarSaePorCliente(cliente).size();
@@ -574,12 +567,6 @@ public class FXML_ConsultaController implements Initializable {
                         System.out.println("~~ SAE ID: " + consultaCad.getSaeId());
 
                     }
-                    
-                }
-
-            };
-            
-            t.start();
             
         }else{
             System.err.println("~~ SAE NULA ~~");
@@ -605,11 +592,6 @@ public class FXML_ConsultaController implements Initializable {
             System.out.println("~~ SOLICITACAO NAO NULA ~~");
             
             // CADASTRAR SOLICITACAO
-            Thread t = new Thread(){
-
-                @Override
-                public void run() {
-
                     if(new SolicitacaoDAO().criar(solicitacaoCad)){
                         
                         int t = new SolicitacaoDAO().listarPorCliente(cliente).size();
@@ -621,12 +603,6 @@ public class FXML_ConsultaController implements Initializable {
                         System.out.println("~~ SOLICITACAO ID: " + consultaCad.getSolicitacaoId());
 
                     }
-                    
-                }
-
-            };
-            
-            t.start();
             
         }else{
             System.err.println("~~ SOLICITACAO NULA ~~");
@@ -676,11 +652,6 @@ public class FXML_ConsultaController implements Initializable {
             System.out.println("~~ EVOLUCAO NAO NULA ~~");
             
             // CADASTRAR EVOLUCAO
-            Thread t = new Thread(){
-
-                @Override
-                public void run() {
-
                     if(new EvolucaoDAO().criar(evolucaoCad)){
                         
                         int t = new EvolucaoDAO().listarPorCliente(cliente).size();
@@ -692,12 +663,6 @@ public class FXML_ConsultaController implements Initializable {
                         System.out.println("~~ EVOLUCAO ID: " + consultaCad.getEvolucaoId());
 
                     }
-                    
-                }
-
-            };
-            
-            t.start();
             
         }else{
             System.err.println("~~ EVOLUCAO NULA ~~");
@@ -730,13 +695,15 @@ public class FXML_ConsultaController implements Initializable {
         
         if(!txtRetornoData.getText().equals(" ") && !txtRetornoData.getText().isEmpty()){
             
+            retornoCad.setDataRetorno(txtRetornoData.getText());
+                
             if(!txtRetornoHora.getText().equals(" ") && !txtRetornoHora.getText().isEmpty()){
                 
-                retornoCad.setDataRetorno(txtRetornoData.getText());
                 retornoCad.setHoraRetorno(txtRetornoHora.getText());
-                retornoCad1 = true;
 
             }
+            
+            retornoCad1 = true;
             
         }else{
             
@@ -750,10 +717,6 @@ public class FXML_ConsultaController implements Initializable {
             System.out.println("~~ RETORNO NAO NULO ~~");
             
             // CADASTRAR RETORNO
-            Thread t = new Thread(){
-
-                @Override
-                public void run() {
 
                     if(new RetornoDAO().criar(retornoCad)){
                         
@@ -766,12 +729,6 @@ public class FXML_ConsultaController implements Initializable {
                         System.out.println("~~ RETORNO ID: " + consultaCad.getRetornoId());
 
                     }
-                    
-                }
-
-            };
-            
-            t.start();
             
         }else{
             System.err.println("~~ RETORNO NULO ~~");
@@ -780,28 +737,31 @@ public class FXML_ConsultaController implements Initializable {
         
         if(saeCad1 || solicitacaoCad1 || evolucaoCad1 || retornoCad1){
 
-            Thread salvarConsulta = new Thread(){
-
-                @Override
-                public void run() {
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
                     
                     if(new ConsultasDAO().criar(consultaCad)){
                     
                         new ThreadDialog("Consulta de " + cliente.getNome() + " cadastrada!");
-
-                        int t = new ConsultasDAO().listarConsultasCliente(cliente).size();
-
-                        int id = new ConsultasDAO().listarConsultasCliente(cliente).get(t-1).getId();
-
-                        System.out.println("~~ CONSULTA ID: " + id);
+                        hBoxSalvar.setDisable(true);
 
                     }
                     
                 }
-                
-            };
+            });
             
-            salvarConsulta.start();
+//            Thread salvarConsulta = new Thread(){
+//
+//                @Override
+//                public void run() {
+//                    
+//                    
+//                    
+//                }
+//                
+//            };
+//            
+//            salvarConsulta.start();
 
         }else{
 

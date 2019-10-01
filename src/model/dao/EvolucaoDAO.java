@@ -10,7 +10,6 @@ import java.util.List;
 import model.bean.Clientes;
 import model.bean.Consulta;
 import model.bean.Evolucao;
-import model.bean.Solicitacao;
 import util.ThreadDialog;
 
 /**
@@ -129,16 +128,20 @@ public class EvolucaoDAO {
             stmt = con.prepareStatement("SELECT * FROM evolucao WHERE id = ?");
             stmt.setInt(1, consulta.getEvolucaoId());
             rs = stmt.executeQuery();
-
-            evolucao.setId(rs.getInt("id"));
-            evolucao.setUsuarioId(rs.getString("usuarioId"));
-            evolucao.setClienteId(rs.getInt("clienteId"));
-            evolucao.setFoto1(rs.getString("foto1"));
-            evolucao.setCaminhoFoto1(rs.getString("caminhoFoto1"));
-            evolucao.setFoto2(rs.getString("foto2"));
-            evolucao.setCaminhoFoto2(rs.getString("caminhoFoto2"));
-            evolucao.setEvolucao(rs.getString("evolucao"));
-            evolucao.setData(rs.getString("data"));
+            
+            while(rs.next()){
+                
+                evolucao.setId(rs.getInt("id"));
+                evolucao.setUsuarioId(rs.getString("usuarioId"));
+                evolucao.setClienteId(rs.getInt("clienteId"));
+                evolucao.setFoto1(rs.getString("foto1"));
+                evolucao.setCaminhoFoto1(rs.getString("caminhoFoto1"));
+                evolucao.setFoto2(rs.getString("foto2"));
+                evolucao.setCaminhoFoto2(rs.getString("caminhoFoto2"));
+                evolucao.setEvolucao(rs.getString("evolucao"));
+                evolucao.setData(rs.getString("data"));
+                
+            }
 
         } catch (SQLException e) {
             

@@ -20,6 +20,7 @@ public class Retorno {
         this.procedimento = retorno.getProcedimento();
         this.motivo = retorno.getMotivo();
         this.dataRetorno = retorno.getDataRetorno();
+        this.horaRetorno = retorno.getHoraRetorno();
         this.data = retorno.getData();
     }
     

@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Clientes;
 import model.bean.Consulta;
-import model.bean.Evolucao;
 import model.bean.Retorno;
-import model.bean.Sae;
 import util.ThreadDialog;
 
 /**
@@ -130,16 +128,19 @@ public class RetornoDAO {
             stmt = con.prepareStatement("SELECT * FROM retorno WHERE id = ?");
             stmt.setInt(1, consulta.getRetornoId());
             rs = stmt.executeQuery();
-
-            retorno.setId(rs.getInt("id"));
-            retorno.setUsuario(rs.getString("usuario"));
-            retorno.setClienteId(rs.getInt("clienteId"));
-            retorno.setTipo(rs.getString("tipo"));
-            retorno.setProcedimento(rs.getString("procedimento"));
-            retorno.setMotivo(rs.getString("motivo"));
-            retorno.setDataRetorno(rs.getString("dataRetorno"));
-            retorno.setHoraRetorno(rs.getString("horaRetorno"));
-            retorno.setData(rs.getString("data"));
+            while(rs.next()){
+                
+                retorno.setId(rs.getInt("id"));
+                retorno.setUsuario(rs.getString("usuario"));
+                retorno.setClienteId(rs.getInt("clienteId"));
+                retorno.setTipo(rs.getString("tipo"));
+                retorno.setProcedimento(rs.getString("procedimento"));
+                retorno.setMotivo(rs.getString("motivo"));
+                retorno.setDataRetorno(rs.getString("dataRetorno"));
+                retorno.setHoraRetorno(rs.getString("horaRetorno"));
+                retorno.setData(rs.getString("data"));
+                
+            }
 
         } catch (SQLException e) {
             

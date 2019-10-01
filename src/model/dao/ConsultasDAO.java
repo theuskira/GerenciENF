@@ -86,6 +86,7 @@ public class ConsultasDAO {
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
                 consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
+                consulta.setEvolucaoId(rs.getInt("evolucaoId"));
                 consulta.setData(rs.getString("data"));
                 
                 System.out.println("* Consulta encontrada!");
@@ -135,6 +136,7 @@ public class ConsultasDAO {
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
                 consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
+                consulta.setEvolucaoId(rs.getInt("evolucaoId"));
                 consulta.setData(rs.getString("data"));
                 
                 System.out.println("* Consulta encontrada!");
@@ -184,9 +186,10 @@ public class ConsultasDAO {
                 consulta.setClienteId(rs.getInt("clienteId"));
                 consulta.setSaeId(rs.getInt("saeId"));
                 consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
+                consulta.setEvolucaoId(rs.getInt("evolucaoId"));
                 consulta.setData(rs.getString("data"));
                 
-                System.out.println("* Consulta encontrada!");
+                System.out.println("* Consulta de " + usuario.getNome() + " encontrada!");
                 
                 listaConsulta.add(consulta);
                 
@@ -203,7 +206,7 @@ public class ConsultasDAO {
             
         }
         
-        System.out.println(listaConsulta.size() + " consulta(s) encontrada(s)!");
+        System.out.println(listaConsulta.size() + " consulta(s) de " + usuario.getNome() + " encontrada(s)!");
         
         return listaConsulta;
         

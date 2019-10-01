@@ -1,16 +1,11 @@
 package util;
 
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import model.bean.Usuario;
 import model.dao.UsuarioDAO;
 
@@ -61,7 +56,7 @@ public class ThreadLogarUsuario implements Runnable{
         }finally{
             System.out.println("Thread Logar Usuario Finalizou!");
             if(logar){
-                new ThreadIniciar(Util.TITULO + " - " + Atual.getUsuario().getNome(), "/gerencienf/FXML_Principal.fxml", true, imgStatus).run();
+                //new ThreadIniciar(Util.TITULO + " - " + Atual.getUsuario().getNome(), "/gerencienf/FXML_Principal.fxml", true, imgStatus).run();
                 //iniciar();
             }else{
                 txtStatus.setText("Usuario e/ou Senha Inválido(s)!");

@@ -13,6 +13,14 @@ import util.Util;
  * @author Matheus - DELL
  */
 public class GerenciENF extends Application {
+    private static Stage stage;
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,13 +33,15 @@ public class GerenciENF extends Application {
         stage.setResizable(false);
         stage.setTitle(Util.TITULO);
         stage.show();
+        setStage(stage);
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    
+    public static Stage getStage(){
+        return stage;    
+    }
+    
+    public void setStage(Stage stage){
+        GerenciENF.stage = stage;
     }
     
 }

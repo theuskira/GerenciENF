@@ -12,7 +12,7 @@ public class Conexao {
     private static final String DRIVE = "com.mysql.jdbc.Driver";
 
     // CONFIGURACOES REDE
-    private static final String LOCAL = "192.168.1.150";
+    private static final String LOCAL = "192.168.2.150";
     private static final String USER = "theuskira";
     private static final String PASSWORD = "pw123456";
 

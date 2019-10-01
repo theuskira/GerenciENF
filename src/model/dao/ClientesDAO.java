@@ -192,4 +192,52 @@ public class ClientesDAO {
         
     }
     
+    public Clientes localizar(int id){
+        
+        System.out.println("** LOCALIZAR CLIENTE **");
+        
+        ResultSet rs = null;
+        
+        Clientes cliente = new Clientes();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM clientes WHERE id = ?");
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNumero(rs.getString("numero"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setCadastro(rs.getString("cadastro"));
+                cliente.setDataNascimento(rs.getString("dataNascimento"));
+                cliente.setSexo(rs.getString("sexo"));
+                cliente.setPeso(rs.getDouble("peso"));
+                cliente.setAltura(rs.getDouble("altura"));
+                
+                System.out.println("* Cliente encontrado: " + cliente.getNome());
+                
+                System.out.println("* Cliente localizado: " + cliente.getNome());
+                
+            }
+
+        } catch (SQLException e) {
+            
+            new ThreadDialog("Erro ao Localizar o Cliente: " + e.getMessage());
+            System.err.println("Erro ao Localizar o Cliente: " + e.getMessage());
+            
+        }finally{
+            
+            Conexao.closeConnection(con, stmt, rs);
+            
+        }
+        
+        return cliente;
+        
+    }
+    
 }

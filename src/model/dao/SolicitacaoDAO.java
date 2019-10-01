@@ -167,12 +167,16 @@ public class SolicitacaoDAO {
             stmt = con.prepareStatement("SELECT * FROM solicitacao WHERE id = ?");
             stmt.setInt(1, consulta.getSolicitacaoId());
             rs = stmt.executeQuery();
-
-            solicitacao.setId(rs.getInt("id"));
-            solicitacao.setUsuarioId(rs.getString("usuarioId"));
-            solicitacao.setClienteId(rs.getInt("clienteId"));
-            solicitacao.setSolicitacao(rs.getString("solicitacao"));
-            solicitacao.setData(rs.getString("data"));
+            
+            while(rs.next()){
+                
+                solicitacao.setId(rs.getInt("id"));
+                solicitacao.setUsuarioId(rs.getString("usuarioId"));
+                solicitacao.setClienteId(rs.getInt("clienteId"));
+                solicitacao.setSolicitacao(rs.getString("solicitacao"));
+                solicitacao.setData(rs.getString("data"));
+                
+            }
 
         } catch (SQLException e) {
             

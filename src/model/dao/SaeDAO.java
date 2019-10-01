@@ -179,17 +179,19 @@ public class SaeDAO {
             stmt = con.prepareStatement("SELECT * FROM sae WHERE id = ?");
             stmt.setInt(1, consulta.getSaeId());
             rs = stmt.executeQuery();
-
-            sae.setId(rs.getInt("id"));
-            sae.setUsuario(rs.getString("usuario"));
-            sae.setClienteId(rs.getInt("clienteId"));
-            sae.setHistorico(rs.getString("historico"));
-            sae.setDiagnostico(rs.getString("diagnostico"));
-            sae.setPlanejamento(rs.getString("planejamento"));
-            sae.setImplementacao(rs.getString("implementacao"));
-            sae.setAvalicacaoEvolucao(rs.getString("avaliacaoEvolucao"));
-            sae.setData(rs.getString("data"));
-
+            while(rs.next()){
+                
+                sae.setId(rs.getInt("id"));
+                sae.setUsuario(rs.getString("usuario"));
+                sae.setClienteId(rs.getInt("clienteId"));
+                sae.setHistorico(rs.getString("historico"));
+                sae.setDiagnostico(rs.getString("diagnostico"));
+                sae.setPlanejamento(rs.getString("planejamento"));
+                sae.setImplementacao(rs.getString("implementacao"));
+                sae.setAvalicacaoEvolucao(rs.getString("avaliacaoEvolucao"));
+                sae.setData(rs.getString("data"));
+                
+            }
         } catch (SQLException e) {
             
             new ThreadDialog("Erro ao recuperar a (SAE): " + e.getMessage());

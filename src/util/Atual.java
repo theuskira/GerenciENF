@@ -21,6 +21,8 @@ public class Atual {
     private static Clientes cliente;
     private static boolean editarCliente = false;
     private static List<Clientes> listaClientes = new ArrayList<>();
+    private static List<Clientes> listaClientesDia = new ArrayList<>();
+    private static List<Consulta> listaConsultaDia = new ArrayList<>();
     private static Consulta consulta;
     private static boolean verConsulta = false;
     private static Sae sae;
@@ -115,7 +117,21 @@ public class Atual {
     public static void setRetorno(Retorno retorno) {
         Atual.retorno = retorno;
     }
-    
-    
+
+    public static List<Clientes> getListaClientesDia() {
+        return listaClientesDia;
+    }
+
+    public static void setListaClientesDia(Clientes clienteDia) {
+        Atual.listaClientesDia.add(clienteDia);
+    }
+
+    public static List<Consulta> getListaConsultaDia() {
+        return listaConsultaDia;
+    }
+
+    public static void setListaConsultaDia(Consulta consultaDia) {
+        Atual.listaConsultaDia.add(consultaDia);
+    }
     
 }

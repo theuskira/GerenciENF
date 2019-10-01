@@ -35,7 +35,6 @@ import static javafx.scene.input.KeyCode.F7;
 import static javafx.scene.input.KeyCode.F8;
 import static javafx.scene.input.KeyCode.F9;
 import javafx.scene.input.KeyEvent;
-import static util.Util.calculaIdade;
 
 /**
  *
