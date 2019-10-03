@@ -15,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -24,7 +25,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -65,7 +65,7 @@ public class FXML_HomeController implements Initializable {
     @FXML
     private TableColumn<Clientes, String> colunaConsultasDiaCPF;
     @FXML
-    private LineChart<?, ?> lineChart7Dias;
+    private LineChart<String, Number> lineChart7Dias;
     @FXML
     private Insets x3;
     @FXML
@@ -76,11 +76,15 @@ public class FXML_HomeController implements Initializable {
     private ImageView imgLogo;
     @FXML
     private Insets x4;
+    @FXML
+    private ImageView imgAtualizar;
 
     /**
      * Initializes the controller class.
      */
     private Usuario usuario;
+    @FXML
+    private Label txtUltimos7Dias;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -92,6 +96,12 @@ public class FXML_HomeController implements Initializable {
         
         iniciarComponentes();
         
+        imgAtualizar.setOnMouseClicked(k -> {
+
+            iniciarComponentes();
+
+        });
+        
     }
     
     private void iniciarComponentes(){
@@ -101,19 +111,10 @@ public class FXML_HomeController implements Initializable {
         //txtDataHora.setText(Util.getDateTime());
         new ThreadDataHora(txtDataHora);
         
-        // ConsultasDAO
-        ConsultasDAO consultasDAO = new ConsultasDAO();
-        int totalConsultas = consultasDAO.listarConsultasUsuario(Atual.getUsuario()).size();
-        
-        txtTotalConsultasEnf.setText(
-            "Consultas realizadas: " 
-            + totalConsultas
-        );
-        
         colunaConsultasDiaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaConsultasDiaCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         
-        tabelaConsultasDia.setItems(consultasDoDia());
+        atualizar();
         
         tabelaConsultasDia.setRowFactory( tv -> {
             TableRow<Clientes> row = new TableRow<>();
@@ -134,19 +135,35 @@ public class FXML_HomeController implements Initializable {
             return row ;
         });
         
+    }
+    
+    private void atualizar(){
+        
+        // ConsultasDAO
+        ConsultasDAO consultasDAO = new ConsultasDAO();
+        int totalConsultas = consultasDAO.listarConsultasUsuario(Atual.getUsuario()).size();
+        
+        txtTotalConsultasEnf.setText(
+            "Consultas realizadas: " 
+            + totalConsultas
+        );
+        
         tabelaConsultasDia.setItems(consultasDoDia());
+        
         txtTotalConsultas.setText(
             "Consultas do dia: "
                 + Atual.getListaClientesDia().size()
         );
         
+        Util.atualizarLineChart7Dias(lineChart7Dias, usuario,  txtUltimos7Dias);
+        
     }
     
     private ObservableList<Clientes> consultasDoDia() {
             
-        int anoAtual = Integer.parseInt(getDateTime().substring(0, 4));
-        int mesAtual = Integer.parseInt(getDateTime().substring(5, 7));
-        int diaAtual = Integer.parseInt(getDateTime().substring(8, 10));
+        int anoAtual = Integer.parseInt(Util.getDateTimeEn().substring(0, 4));
+        int mesAtual = Integer.parseInt(Util.getDateTimeEn().substring(5, 7));
+        int diaAtual = Integer.parseInt(Util.getDateTimeEn().substring(8, 10));
         
         Atual.getListaClientesDia().clear();
         Atual.getListaConsultaDia().clear();
@@ -181,12 +198,6 @@ public class FXML_HomeController implements Initializable {
                 Atual.getListaClientesDia()
                 
         );
-    }
-    
-    private String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
-        Date date = new Date();
-        return dateFormat.format(date);
     }
     
     private void iniciarConsulta(){

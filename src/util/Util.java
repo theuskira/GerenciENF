@@ -20,6 +20,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.F1;
@@ -35,6 +38,9 @@ import static javafx.scene.input.KeyCode.F7;
 import static javafx.scene.input.KeyCode.F8;
 import static javafx.scene.input.KeyCode.F9;
 import javafx.scene.input.KeyEvent;
+import model.bean.Consulta;
+import model.bean.Usuario;
+import model.dao.ConsultasDAO;
 
 /**
  *
@@ -318,7 +324,212 @@ public class Util {
     }
 
 
-//**** para usar é só chamar o metodo calculaIdade e passar uma String com a data do nascimento 
- //System.out.println(calculaIdade("06/09/1979"));
+    // LINE CHART
+    // LineChart 7 Dias
+    public static void atualizarLineChart7Dias(LineChart lineChart7Dias, Usuario usuario, Label txtUltimos7Dias){
+        
+        lineChart7Dias.getData().clear();
+        
+        int anoAtual = Integer.parseInt(getDateTimeEn().substring(0, 4));
+        int mesAtual = Integer.parseInt(getDateTimeEn().substring(5, 7));
+        int diaAtual = Integer.parseInt(getDateTimeEn().substring(8, 10));
+        
+        XYChart.Series<String, Number> series =  new  XYChart.Series<String, Number>();
+        series.setName(usuario.getNome());
+        
+        // Setimo
+        int dia7 = diaAtual - 6;
+        int mes7 = mesAtual;
+        int ano7 = anoAtual;
+        if(dia7 < 1){
+            if(mes7 == 1){
+                mes7 = 12;
+                ano7 --;
+            }else{
+                mes7--;
+            }
+            dia7 = calendario(mes7) - Math.abs(dia7);
+        }
+        int tamanho7 = new ConsultasDAO().porDataUsuario(usuario, ano7 + "-" + mes7 + "-" + dia7 ).size();
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia7 + "/" + mes7 + "\n" + ano7, tamanho7)
+            );
+        
+        // Sexto
+        int dia6 = diaAtual - 5;
+        int mes6 = mesAtual;
+        int ano6 = anoAtual;
+        if(dia6 < 1){
+            if(mes6 == 1){
+                mes6 = 12;
+                ano6 --;
+            }else{
+                mes6--;
+            }
+            dia6 = calendario(mes6) - Math.abs(dia6);
+        }
+        int tamanho6 = new ConsultasDAO().porDataUsuario(usuario, ano6 + "-" + mes6 + "-" + dia6 ).size();
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia6 + "/" + mes6 + "\n" + ano6, tamanho6)
+            );
+        
+        // Quinto
+        int tamanho5 = 0;
+        int dia5 = diaAtual - 4;
+        int mes5 = mesAtual;
+        int ano5 = anoAtual;
+        if(dia5 < 1){
+            if(mes5 == 1){
+                mes5 = 12;
+                ano5 --;
+            }else{
+                mes5--;
+            }
+            dia5 = calendario(mes5) - Math.abs(dia5);
+        }
+        for(Consulta con : new ConsultasDAO().porDataUsuario(usuario, ano5 + "-" + mes5 + "-" + dia5 )){
+            
+            tamanho5 ++;
+            
+        }
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia5 + "/" + mes5 + "\n" + ano5, tamanho5)
+            );
+        
+        // Quarto
+        int tamanho4 = 0;
+        int dia4 = diaAtual - 3;
+        int mes4 = mesAtual;
+        int ano4 = anoAtual;
+        if(dia4 < 1){
+            if(mes4 == 1){
+                mes4 = 12;
+                ano4 --;
+            }else{
+                mes4--;
+            }
+            dia4 = calendario(mes4) - Math.abs(dia4);
+        }
+        for(Consulta con : new ConsultasDAO().porDataUsuario(usuario, ano4 + "-" + mes4 + "-" + dia4 )){
+            
+            tamanho4 ++;
+            
+        }
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia4 + "/" + mes4 + "\n" + ano4, tamanho4)
+            );
+        
+        // Terceiro
+        int tamanho3 = 0;
+        int dia3 = diaAtual - 2;
+        int mes3 = mesAtual;
+        int ano3 = anoAtual;
+        if(dia3 < 1){
+            if(mes3 == 1){
+                mes3 = 12;
+                ano3 --;
+            }else{
+                mes3--;
+            }
+            dia3 = calendario(mes3) - Math.abs(dia3);
+        }
+        for(Consulta con : new ConsultasDAO().porDataUsuario(usuario, ano3 + "-" + mes3 + "-" + dia3 )){
+            
+            tamanho3 ++;
+            
+        }
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia3 + "/" + mes3 + "\n" + ano3, tamanho3)
+            );
+        
+        // Segundo
+        int tamanho2 = 0;
+        int dia2 = diaAtual - 1;
+        int mes2 = mesAtual;
+        int ano2 = anoAtual;
+        if(dia2 < 1){
+            if(mes2 == 1){
+                mes2 = 12;
+                ano2 --;
+            }else{
+                mes2--;
+            }
+            dia2 = calendario(mes2) - Math.abs(dia2);
+        }
+        for(Consulta con : new ConsultasDAO().porDataUsuario(usuario, ano2 + "-" + mes2 + "-" + dia2 )){
+            
+            tamanho2 ++;
+            
+        }
+        series.getData().add(new XYChart.Data<String, Number>(
+                    dia2 + "/" + mes2 + "\n" + ano2, tamanho2)
+            );
+        
+        // Primeiro
+        int tamanho1 = 0;
+        for(Consulta con : new ConsultasDAO().porDataUsuario(usuario, anoAtual + "-" + mesAtual + "-" + diaAtual)){
+            
+            tamanho1 ++;
+            
+        }
+        series.getData().add(new XYChart.Data<String, Number>(
+                    diaAtual + "/" + mesAtual + "\n" + anoAtual, tamanho1)
+            );
+        
+        txtUltimos7Dias.setText("Consultas dos ultimos 7 dias: " + (
+                tamanho1 
+                + tamanho2 
+                + tamanho3 
+                + tamanho4 
+                + tamanho5
+                + tamanho6
+                + tamanho7)
+                );
+
+        lineChart7Dias.getData().add(series);
+    }
+    
+    private static int calendario(int mes){
+        
+        int mes1 = 31, mes3 = 31, mes5 = 31, mes7 = 31, mes8 = 31, mes10 = 31, mes12 = 31;
+        int mes4 = 30, mes6 = 30, mes9 = 30, mes11 = 30;
+        int mes2 = 28;
+        
+        switch (mes) {
+            case 1:
+                return mes1;
+            case 2:
+                return mes2;
+            case 3:
+                return mes3;
+            case 4:
+                return mes4;
+            case 5:
+                return mes5;
+            case 6:
+                return mes6;
+            case 7:
+                return mes7;
+            case 8:
+                return mes8;
+            case 9:
+                return mes9;
+            case 10:
+                return mes10;
+            case 11:
+                return mes11;
+            case 12:
+                return mes12;
+            default:
+                return  30;
+        }
+        
+    }
+    
+    public static String getDateTimeEn() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
  
 }

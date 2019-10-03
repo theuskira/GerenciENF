@@ -744,25 +744,13 @@ public class FXML_ConsultaController implements Initializable {
                     
                         new ThreadDialog("Consulta de " + cliente.getNome() + " cadastrada!");
                         hBoxSalvar.setDisable(true);
+                        hBoxSalvar.setOpacity(0.5);
 
                     }
                     
                 }
             });
             
-//            Thread salvarConsulta = new Thread(){
-//
-//                @Override
-//                public void run() {
-//                    
-//                    
-//                    
-//                }
-//                
-//            };
-//            
-//            salvarConsulta.start();
-
         }else{
 
             System.err.println("Nada para salvar!");

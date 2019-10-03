@@ -212,4 +212,57 @@ public class ConsultasDAO {
         
     }
     
+    // LISTAR CONSULTAS POR DATA E USUARIO
+    public List<Consulta> porDataUsuario(Usuario usuario, String data){
+        
+        System.out.println("** LISTAR CONSULTAS POR DATA E USUARIO **");
+        System.out.println("** DATA: " + data +" USUARIO: " + usuario.getNome());
+        
+       ResultSet rs = null;
+        
+       List<Consulta> listaConsulta = new ArrayList<>();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM consulta WHERE usuario = ? and DATE(data) = ?");
+            stmt.setString(1, usuario.getUsuario());
+            stmt.setString(2, data);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Consulta consulta = new Consulta();
+                
+                consulta.setId(rs.getInt("id"));
+                consulta.setUsuario(rs.getString("usuario"));
+                consulta.setRetornoId(rs.getInt("retornoId"));
+                consulta.setClienteId(rs.getInt("clienteId"));
+                consulta.setSaeId(rs.getInt("saeId"));
+                consulta.setSolicitacaoId(rs.getInt("solicitacaoId"));
+                consulta.setEvolucaoId(rs.getInt("evolucaoId"));
+                consulta.setData(rs.getString("data"));
+                
+                System.out.println("* Consulta por data e usuario de " + usuario.getNome() + " encontrada!");
+                
+                listaConsulta.add(consulta);
+                
+            }
+            
+        } catch (SQLException e) {
+            
+            new ThreadDialog("Erro ao Listar Consultas de " + usuario.getNome() + "\n" + e.getMessage());
+            System.err.println("Erro ao Listar Consultas de " + usuario.getNome() + "\n" + e.getMessage());
+            
+        }finally{
+            
+            Conexao.closeConnection(con, stmt, rs);
+            
+        }
+        
+        System.out.println(listaConsulta.size() + " consulta(s) em "+ data +" de " + usuario.getNome() + " encontrada(s)!");
+        
+        return listaConsulta;
+        
+    }
+    
 }

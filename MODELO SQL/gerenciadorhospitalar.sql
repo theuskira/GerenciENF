@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Set-2019 às 18:09
+-- Tempo de geração: 01-Out-2019 às 20:22
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `gerenciadorhospitalar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `agendamento`
+--
+
+CREATE TABLE `agendamento` (
+  `id` int(15) NOT NULL,
+  `usuarioId` varchar(30) NOT NULL,
+  `clienteId` int(15) NOT NULL,
+  `dataAgendamento` date NOT NULL,
+  `observacao` varchar(1000) DEFAULT NULL,
+  `data` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -69,10 +84,13 @@ CREATE TABLE `configuracoes` (
 --
 
 CREATE TABLE `consulta` (
+  `id` int(11) NOT NULL,
   `usuario` varchar(30) NOT NULL,
-  `retornoId` int(11) NOT NULL,
   `clienteId` int(11) NOT NULL,
   `saeId` int(11) NOT NULL,
+  `solicitacaoId` int(11) NOT NULL,
+  `evolucaoId` int(11) NOT NULL,
+  `retornoId` int(11) NOT NULL,
   `data` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -83,11 +101,15 @@ CREATE TABLE `consulta` (
 --
 
 CREATE TABLE `evolucao` (
-  `saeId` int(11) NOT NULL,
-  `data` date NOT NULL DEFAULT current_timestamp(),
-  `fotoAnterior` varchar(1000) DEFAULT NULL,
-  `fotoAtual` varchar(1000) DEFAULT NULL,
-  `evolucao` varchar(5000) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `usuarioId` varchar(30) NOT NULL,
+  `clienteId` int(11) NOT NULL,
+  `foto1` varchar(15) DEFAULT NULL,
+  `caminhoFoto1` varchar(1000) DEFAULT NULL,
+  `foto2` varchar(15) DEFAULT NULL,
+  `caminhoFoto2` varchar(1000) DEFAULT NULL,
+  `evolucao` varchar(5000) DEFAULT NULL,
+  `data` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -117,13 +139,15 @@ INSERT INTO `login` (`usuario`, `nome`, `senha`, `nivel`) VALUES
 --
 
 CREATE TABLE `retorno` (
+  `id` int(11) NOT NULL,
   `usuario` varchar(30) NOT NULL,
   `clienteId` int(11) NOT NULL,
   `tipo` varchar(300) DEFAULT NULL,
   `procedimento` varchar(1000) DEFAULT NULL,
   `motivo` varchar(1000) DEFAULT NULL,
-  `data` date NOT NULL,
-  `id` int(11) NOT NULL
+  `dataRetorno` varchar(10) NOT NULL,
+  `horaRetorno` varchar(10) DEFAULT NULL,
+  `data` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -144,9 +168,29 @@ CREATE TABLE `sae` (
   `data` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `solicitacao`
+--
+
+CREATE TABLE `solicitacao` (
+  `id` int(11) NOT NULL,
+  `usuarioId` varchar(30) NOT NULL,
+  `clienteId` int(11) NOT NULL,
+  `solicitacao` varchar(5000) NOT NULL,
+  `data` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `agendamento`
+--
+ALTER TABLE `agendamento`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `clientes`
@@ -164,16 +208,15 @@ ALTER TABLE `configuracoes`
 -- Índices para tabela `consulta`
 --
 ALTER TABLE `consulta`
-  ADD KEY `usuario` (`usuario`),
-  ADD KEY `retornoId` (`retornoId`),
-  ADD KEY `clienteId` (`clienteId`),
-  ADD KEY `saeId` (`saeId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `evolucao`
 --
 ALTER TABLE `evolucao`
-  ADD KEY `saeId` (`saeId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuarioId` (`usuarioId`),
+  ADD KEY `clienteId` (`clienteId`);
 
 --
 -- Índices para tabela `login`
@@ -198,26 +241,56 @@ ALTER TABLE `sae`
   ADD KEY `clienteId` (`clienteId`);
 
 --
+-- Índices para tabela `solicitacao`
+--
+ALTER TABLE `solicitacao`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `agendamento`
+--
+ALTER TABLE `agendamento`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT de tabela `consulta`
+--
+ALTER TABLE `consulta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `evolucao`
+--
+ALTER TABLE `evolucao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `retorno`
 --
 ALTER TABLE `retorno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `sae`
 --
 ALTER TABLE `sae`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de tabela `solicitacao`
+--
+ALTER TABLE `solicitacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para despejos de tabelas
@@ -230,19 +303,11 @@ ALTER TABLE `configuracoes`
   ADD CONSTRAINT `configuracoes_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `login` (`usuario`);
 
 --
--- Limitadores para a tabela `consulta`
---
-ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `login` (`usuario`),
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`retornoId`) REFERENCES `retorno` (`id`),
-  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`clienteId`) REFERENCES `clientes` (`id`),
-  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`saeId`) REFERENCES `sae` (`id`);
-
---
 -- Limitadores para a tabela `evolucao`
 --
 ALTER TABLE `evolucao`
-  ADD CONSTRAINT `evolucao_ibfk_1` FOREIGN KEY (`saeId`) REFERENCES `sae` (`id`);
+  ADD CONSTRAINT `evolucao_ibfk_1` FOREIGN KEY (`usuarioId`) REFERENCES `login` (`usuario`),
+  ADD CONSTRAINT `evolucao_ibfk_2` FOREIGN KEY (`clienteId`) REFERENCES `clientes` (`id`);
 
 --
 -- Limitadores para a tabela `retorno`

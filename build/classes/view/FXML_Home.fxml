@@ -50,7 +50,7 @@
         </VBox>
         <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" spacing="5.0">
           <children>
-            <Label id="txtTotalConsultas" alignment="CENTER" font="$x1" prefWidth="400.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Consultas dos ultimos 7 dias: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" VBox.margin="$x2" />
+            <Label id="txtTotalConsultas" fx:id="txtUltimos7Dias" alignment="CENTER" font="$x1" prefWidth="400.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Consultas dos ultimos 7 dias: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" VBox.margin="$x2" />
             <LineChart fx:id="lineChart7Dias" alternativeColumnFillVisible="false" legendSide="BOTTOM" legendVisible="true" padding="$x3" prefWidth="400.0" style="-fx-background-color: white;&#10;-fx-background-radius: 5px;" title="Desempenho dos ultimos 7 dias" VBox.margin="$x4">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
@@ -66,6 +66,15 @@
             <Label id="txtTotalConsultas" fx:id="txtNomeEnfermeiro" alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Nome Enfermeiro" textAlignment="CENTER" textFill="WHITE" wrapText="true" VBox.margin="$x2" />
             <Label id="txtTotalConsultas" fx:id="txtTotalConsultasEnf" alignment="CENTER" contentDisplay="CENTER" font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="Consultas Realizadas: ?" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
             <Label id="txtTotalConsultas" fx:id="txtDataHora" alignment="CENTER" contentDisplay="CENTER" focusTraversable="true" font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="00/00/0000" textAlignment="CENTER" textFill="WHITE" wrapText="false" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="-1.0">
+              <children>
+                <ImageView fx:id="imgAtualizar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../img/refresh_red.png" />
+                  </image>
+                </ImageView>
+              </children>
+            </HBox>
             <ImageView fx:id="imgLogo" fitHeight="290.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@../img/GerenciENF.png" />
