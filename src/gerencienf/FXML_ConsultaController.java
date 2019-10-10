@@ -1,6 +1,7 @@
 package gerencienf;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
@@ -287,6 +288,28 @@ public class FXML_ConsultaController implements Initializable {
         hBoxImprimir.setOpacity(1.0);
         
         txtDataSistema.setText(Util.formatarData(consulta.getData()));
+        
+        imgEvolucao1.setOnMouseClicked(k -> {
+            
+            if(txtEvolucaoCaminhoFoto1.getText() != null && !txtEvolucaoCaminhoFoto1.getText().isEmpty()){
+                Util.abirArquivo(new File(txtEvolucaoCaminhoFoto1.getText()));
+                System.out.println("FOTO 1 CAMINHO: " + txtEvolucaoCaminhoFoto1.getText());
+            }else{
+                System.err.println("FOTO 1 VAZIA!");
+            }
+
+        });
+
+        imgEvolucao2.setOnMouseClicked(k -> {
+
+            if(txtEvolucaoCaminhoFoto2.getText() != null && !txtEvolucaoCaminhoFoto2.getText().isEmpty()){
+                Util.abirArquivo(new File(txtEvolucaoCaminhoFoto2.getText()));
+                System.out.println("FOTO 2 CAMINHO: " + txtEvolucaoCaminhoFoto2.getText());
+            }else{
+                System.err.println("FOTO 2 VAZIA!");
+            }
+
+        });
         
         // SISTEMATIZAÇÃO DA ASSISTÊNCIA DE ENFERMAGEM (SAE)
         if(consulta.getSaeId() > 0){

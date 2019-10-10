@@ -24,7 +24,7 @@
                         <Font name="System Bold" size="20.0" />
                       </font>
                     </Label>
-                    <ImageView id="imgAddClientes" fx:id="imgAtualizar" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#iniciarComponentes" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
+                    <ImageView id="imgAddClientes" fx:id="imgAtualizar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="&#10;-fx-cursor: hand;">
                       <image>
                         <Image url="@../img/refresh_red.png" />
                       </image>

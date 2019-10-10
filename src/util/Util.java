@@ -5,6 +5,9 @@
  */
 package util;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DateFormat;
@@ -38,9 +41,11 @@ import static javafx.scene.input.KeyCode.F7;
 import static javafx.scene.input.KeyCode.F8;
 import static javafx.scene.input.KeyCode.F9;
 import javafx.scene.input.KeyEvent;
+import model.bean.Clientes;
 import model.bean.Consulta;
 import model.bean.Usuario;
 import model.dao.ConsultasDAO;
+import model.dao.RetornoDAO;
 
 /**
  *
@@ -530,6 +535,48 @@ public class Util {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+    
+    public static void abirArquivo(File file){
+        
+        try {
+            //first check if Desktop is supported by Platform or not
+            if(!Desktop.isDesktopSupported()){
+                System.err.println("Desktop is not supported");
+                return;
+            }
+
+            Desktop desktop = Desktop.getDesktop();
+            if(file.exists()) desktop.open(file);
+
+            //let's try to open PDF file
+            //file = new File("/Users/pankaj/java.pdf");
+            //if(file.exists()) desktop.open(file);
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir o arquivo: " + e.getMessage());
+            new ThreadDialog("Erro ao abrir o arquivo: " + e.getMessage());
+        }
+        
+    }
+    
+    public static String ultimaConsultaCliente(Clientes cliente){
+        
+        String ultimaConsulta = "?";
+                
+        for(Consulta con : new ConsultasDAO().listarConsultasCliente(cliente)){
+            
+            String r = new RetornoDAO().retornoPorConsulta(con).getDataRetorno();
+            
+            if(r != null && !r.isEmpty()){
+                
+                ultimaConsulta = r;
+                
+            }
+            
+        }
+        
+        return ultimaConsulta;
+        
     }
  
 }

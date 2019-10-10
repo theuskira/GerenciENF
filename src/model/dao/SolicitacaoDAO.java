@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Clientes;
 import model.bean.Consulta;
-import model.bean.Sae;
 import model.bean.Solicitacao;
 import util.ThreadDialog;
 

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1017.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.FXML_ConsultasController">
+  <children>
+    <SplitPane dividerPositions="0.2920863309352518" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" prefHeight="200.0" prefWidth="-1.0" style="">
+          <children>
+            <HBox alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <VBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="290.0" spacing="5.0" style="-fx-background-color: white;&#10;-fx-background-radius: 5px;&#10;-fx-border-color: red;&#10;-fx-border-width: 2px;&#10;-fx-border-radius: 5;">
+                  <children>
+                    <Label alignment="CENTER" prefWidth="280.0" text="LOCALIZAR" textFill="RED">
+                      <font>
+                        <Font name="System Bold" size="20.0" fx:id="x1" />
+                      </font>
+                    </Label>
+                    <TextField fx:id="txtPesquisaCliente" prefWidth="276.0" promptText="Localizar" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: red;&#10;-fx-background-color: white;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" />
+                    <TextField fx:id="txtPesquisaData" prefWidth="200.0" promptText="00/00/0000" style="-fx-font-size: 16;&#10;-fx-font-weight: bold;&#10;-fx-text-fill: red;&#10;-fx-background-color: white;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;" />
+                    <HBox id="hBoxPesquisaData" fx:id="hBoxLocalizar" alignment="CENTER_RIGHT" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-cursor: hand;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;">
+                      <children>
+                        <Label alignment="CENTER" prefWidth="230.0" text="Localizar" textFill="RED">
+                          <font>
+                            <Font name="System Bold" size="18.0" fx:id="x3" />
+                          </font>
+                        </Label>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@../img/search_red.png" />
+                          </image>
+                        </ImageView>
+                      </children>
+                      <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                      </padding>
+                    </HBox>
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                  </padding>
+                </VBox>
+                <HBox id="hBoxPesquisaData" fx:id="hBoxTodasConsultas" alignment="CENTER_RIGHT" maxHeight="30.0" maxWidth="-Infinity" onMouseClicked="#atualizar" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-cursor: hand;&#10;-fx-border-color: red;&#10;-fx-border-radius: 5;&#10;-fx-border-width: 2px;&#10;-fx-background-color: white;&#10;-fx-background-radius: 5px;">
+                  <children>
+                    <Label font="$x3" text="Todas as Consultas" textFill="RED" />
+                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../img/search_red.png" />
+                      </image>
+                    </ImageView>
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                  </padding>
+                </HBox>
+              </children>
+              <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+              </padding>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <Label fx:id="txtStatus" alignment="CENTER" font="$x1" text="Todas as Consultas" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <SplitPane dividerPositions="0.6999012833168805" focusTraversable="true" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                  <children>
+                    <TableView fx:id="tabelaConsulta" onMouseClicked="#onMouseClickedTable" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                      <columns>
+                        <TableColumn editable="false" minWidth="95.0" prefWidth="95.0" resizable="false" sortable="false" text="Data Consulta" fx:id="colunaData" />
+                        <TableColumn editable="false" minWidth="120.0" prefWidth="120.0" resizable="false" sortable="false" text="Cliente" fx:id="colunaNomeCliente" />
+                        <TableColumn editable="false" minWidth="120.0" prefWidth="120.0" resizable="false" sortable="false" text="Enfermeiro" fx:id="colunaNomeEnfermeiro" />
+                        <TableColumn editable="false" minWidth="70.0" prefWidth="70.0" resizable="false" sortable="false" text="SAE" fx:id="colunaSae" />
+                        <TableColumn editable="false" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Solicitação" fx:id="colunaSolicitacao" />
+                        <TableColumn editable="false" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Evolução" fx:id="colunaEvolucao" />
+                        <TableColumn editable="false" minWidth="70.0" prefWidth="70.0" resizable="false" sortable="false" text="Retorno" fx:id="colunaRetornoData" />
+                      </columns>
+                    </TableView>
+                  </children>
+                </AnchorPane>
+                <AnchorPane maxWidth="-Infinity" minHeight="-1.0" minWidth="-Infinity" prefHeight="-1.0" prefWidth="301.0">
+                  <children>
+                    <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                      <children>
+                        <Label fx:id="txtNomeEnfermeiro" alignment="CENTER" font="$x1" prefWidth="291.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;&#10;-fx-cursor: hand;" text="Nome Enfermeiro" textAlignment="CENTER" textFill="WHITE" />
+                        <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;">
+                          <children>
+                            <Label font="$x1" text="CLIENTE" textFill="WHITE" />
+                            <Label fx:id="txtNomeCliente" font="$x3" text="Nome Cliente" textFill="WHITE" />
+                            <Label fx:id="txtData" font="$x3" text="Idade: ?" textFill="WHITE" />
+                            <Label fx:id="txtSexo" font="$x3" text="Sexo: ?" textFill="WHITE" />
+                            <Label fx:id="txtAltura" font="$x3" text="Altura: ?" textFill="WHITE" />
+                          </children>
+                        </VBox>
+                        <Label id="txtData" fx:id="txtDataConsulta" alignment="CENTER" font="$x1" prefWidth="291.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;&#10;-fx-cursor: hand;" text="00/00/0000" textAlignment="CENTER" textFill="WHITE" />
+                      </children>
+                      <padding>
+                        <Insets />
+                      </padding>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </items>
+            </SplitPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>

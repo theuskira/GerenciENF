@@ -41,11 +41,6 @@ public class FXML_PrincipalController implements Initializable {
     private AnchorPane apCorpo;
     @FXML
     private ImageView imgStatus;
-
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML
     private ImageView imgInicio;
     @FXML
@@ -58,23 +53,54 @@ public class FXML_PrincipalController implements Initializable {
     private ImageView imgConsultas;
     @FXML
     private Label txtConsultas;
+    @FXML
+    private HBox hBoxRetornos;
+    @FXML
+    private ImageView imgRetornos;
+    @FXML
+    private Label txtRetornos;
+    
+
+    /**
+     * Initializes the controller class.
+     */
     
     
     private AnchorPane apInicio;
     private AnchorPane apClientes;
+    private AnchorPane apConsultas;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println("## FXML PRINCIPAL INICIOU ##");
         
         try {
+            
             apInicio = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Home.fxml"));
-            apClientes = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Clientes.fxml"));
+            
+            Thread t = new Thread(){
+
+                @Override
+                public void run() {
+                    try {
+                        
+                        apClientes = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Clientes.fxml"));
+                        apConsultas = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Consultas.fxml"));
+                        
+                    } catch (Exception e) {
+                        
+                        System.err.println("Erro AnchorPane: " + e.getMessage());
+                        
+                    }
+                    
+                }
+            };
+            
+            t.start();
+            
         } catch (Exception e) {
-            System.out.println("Erro AnchorPane: " + e.getMessage());
+            System.err.println("Erro AnchorPane: " + e.getMessage());
         }
-        
-        iniciarHBox(0);
         
         new ThreadConexao(imgStatus);
         
@@ -83,6 +109,8 @@ public class FXML_PrincipalController implements Initializable {
             new ThreadConexao(imgStatus);
             
         });
+        
+        iniciarHBox(0);
         
     }
     
@@ -129,6 +157,14 @@ public class FXML_PrincipalController implements Initializable {
                     txtConsultas.setTextFill(Color.web("RED")); // RED
                     imgConsultas.setImage(new Image("/img/card_red.png"));
                     removerHBox(index);
+                    apCorpo.getChildren().clear();
+                    iniciarAnchor(apConsultas);
+                    break;
+                case 3: // Retornos
+                    hBoxRetornos.setStyle("-fx-background-color: WHITE; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtRetornos.setTextFill(Color.web("RED")); // RED
+                    imgRetornos.setImage(new Image("/img/return_red.png"));
+                    removerHBox(index);
                     break;
                 default:
                     hBoxInicio.setStyle("-fx-background-color: WHITE; -fx-background-radius: 5; -fx-cursor: hand;");
@@ -156,6 +192,10 @@ public class FXML_PrincipalController implements Initializable {
                     hBoxConsultas.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
                     txtConsultas.setTextFill(Color.web("WHITE")); // WHITE
                     imgConsultas.setImage(new Image("/img/card.png"));
+                    // REMOVER RETORNOS
+                    hBoxRetornos.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtRetornos.setTextFill(Color.web("WHITE")); // WHITE
+                    imgRetornos.setImage(new Image("/img/return.png"));
                     break;
                 case 1: // CLIENTES
                     // REMOVER INICIO
@@ -166,6 +206,10 @@ public class FXML_PrincipalController implements Initializable {
                     hBoxConsultas.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
                     txtConsultas.setTextFill(Color.web("WHITE")); // WHITE
                     imgConsultas.setImage(new Image("/img/card.png"));
+                    // REMOVER RETORNOS
+                    hBoxRetornos.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtRetornos.setTextFill(Color.web("WHITE")); // WHITE
+                    imgRetornos.setImage(new Image("/img/return.png"));
                     break;
                 case 2: // CONSULTAS
                     // REMOVER INICIO
@@ -176,6 +220,24 @@ public class FXML_PrincipalController implements Initializable {
                     hBoxClientes.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
                     txtClientes.setTextFill(Color.web("WHITE")); // WHITE
                     imgClientes.setImage(new Image("/img/customer.png"));
+                    // REMOVER RETORNOS
+                    hBoxRetornos.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtRetornos.setTextFill(Color.web("WHITE")); // WHITE
+                    imgRetornos.setImage(new Image("/img/return.png"));
+                    break;
+                case 3: // RETORNOS
+                    // REMOVER INICIO
+                    hBoxInicio.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtInicio.setTextFill(Color.web("WHITE")); // WHITE
+                    imgInicio.setImage(new Image("/img/home.png"));
+                    // REMOVER CLIENTES
+                    hBoxClientes.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtClientes.setTextFill(Color.web("WHITE")); // WHITE
+                    imgClientes.setImage(new Image("/img/customer.png"));
+                    // REMOVER CONSULTAS
+                    hBoxConsultas.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtConsultas.setTextFill(Color.web("WHITE")); // WHITE
+                    imgConsultas.setImage(new Image("/img/card.png"));
                     break;
                 default:
                     // REMOVER CLIENTES
@@ -186,6 +248,10 @@ public class FXML_PrincipalController implements Initializable {
                     hBoxConsultas.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
                     txtConsultas.setTextFill(Color.web("WHITE")); // WHITE
                     imgConsultas.setImage(new Image("/img/card.png"));
+                    // REMOVER RETORNOS
+                    hBoxRetornos.setStyle("-fx-background-color: RED; -fx-background-radius: 5; -fx-cursor: hand;");
+                    txtRetornos.setTextFill(Color.web("WHITE")); // WHITE
+                    imgRetornos.setImage(new Image("/img/return.png"));
                     break;
             }
         } catch (Exception e) {
@@ -210,6 +276,12 @@ public class FXML_PrincipalController implements Initializable {
     private void iniciarHBoxConsultas(MouseEvent event) {
         iniciarHBox(2);
         System.out.println("Clicou em Consultas");
+    }
+
+    @FXML
+    private void iniciarHBoxRetornos(MouseEvent event) {
+        iniciarHBox(3);
+        System.out.println("Clicou em Retornos");
     }
     
 }

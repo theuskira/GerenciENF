@@ -113,7 +113,7 @@
             <TableColumn minWidth="70.0" prefWidth="70.0" text="SAE" fx:id="colunaSae" />
             <TableColumn minWidth="100.0" prefWidth="100.0" text="Solicitação" fx:id="colunaSolicitacao" />
             <TableColumn minWidth="100.0" prefWidth="100.0" text="Evolução" fx:id="colunaEvolucao" />
-            <TableColumn minWidth="100.0" prefWidth="100.0" text="Tipo de Retorno" fx:id="colunaRetornoTipo" />
+            <TableColumn minWidth="100.0" prefWidth="100.0" text="Tipo Retorno" fx:id="colunaRetornoTipo" />
             <TableColumn minWidth="100.0" prefWidth="100.0" text="Motivo Retorno" fx:id="colunaRetornoMotivo" />
             <TableColumn minWidth="100.0" prefWidth="100.0" text="Data Retorno" fx:id="colunaRetornoData" />
           </columns>

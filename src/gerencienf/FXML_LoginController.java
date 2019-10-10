@@ -40,13 +40,12 @@ public class FXML_LoginController implements Initializable {
     private Label txtStatus;
     @FXML
     private ImageView imgStatus;
-    
-    private final KeyCombination ENTER = (KeyCombination) new KeyCodeCombination(KeyCode.ENTER);
     @FXML
     private Font x1;
     @FXML
     private Button btnEntrar;
     
+    private final KeyCombination ENTER = (KeyCombination) new KeyCodeCombination(KeyCode.ENTER);
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

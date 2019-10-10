@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.bean.Consulta;
+import model.bean.Solicitacao;
 import model.bean.Usuario;
 import util.ThreadDialog;
 
@@ -96,6 +98,46 @@ public class UsuarioDAO {
         System.out.println(listaUsuario.size() + " usuario(s) encontrado(s)!");
         
         return listaUsuario;
+        
+    }
+    
+    public Usuario localizar(String usuarioId){
+        
+        System.out.println("** USUARIO POR USUARIO **");
+        
+        ResultSet rs = null;
+        
+        Usuario usuario = new Usuario();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM login WHERE usuario = ?");
+            stmt.setString(1, usuarioId);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setNivel(rs.getInt("nivel"));
+                
+                System.out.println("* Usuario encontrado: " + usuario.getUsuario());
+                
+            }
+
+        } catch (SQLException e) {
+            
+            new ThreadDialog("Erro ao recuperar o Usuario: " + e.getMessage());
+            System.err.println("Erro ao recuperar o Usuario: " + e.getMessage());
+            
+        }finally{
+            
+            Conexao.closeConnection(con, stmt, rs);
+            
+        }
+        
+        return usuario;
         
     }
     

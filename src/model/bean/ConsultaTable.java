@@ -6,11 +6,27 @@ package model.bean;
  */
 public class ConsultaTable{
     
-    private String sae, solicitacao, evolucao, 
+    private String nomeCliente, nomeEnfermeiro, sae, solicitacao, evolucao, 
             tipoRetorno, motivoRetorno, dataRetorno, data;
     
     private Consulta consulta;
 
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getNomeEnfermeiro() {
+        return nomeEnfermeiro;
+    }
+
+    public void setNomeEnfermeiro(String nomeEnfermeiro) {
+        this.nomeEnfermeiro = nomeEnfermeiro;
+    }
+    
     public String getSae() {
         return sae;
     }

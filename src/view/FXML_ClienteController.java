@@ -27,11 +27,6 @@ import javafx.stage.Stage;
 import model.bean.Clientes;
 import model.bean.Consulta;
 import model.bean.ConsultaTable;
-import model.bean.Evolucao;
-import model.bean.Retorno;
-import model.bean.Sae;
-import model.bean.Solicitacao;
-import model.dao.ClientesDAO;
 import model.dao.ConsultasDAO;
 import model.dao.EvolucaoDAO;
 import model.dao.RetornoDAO;
@@ -119,7 +114,7 @@ public class FXML_ClienteController implements Initializable {
         System.out.println("CLIENTE SELECIONADO: " + clienteSelecionado.getNome());
   
         iniciarComponentes();
-
+        
     }
     
     private void iniciarComponentes(){
@@ -171,6 +166,25 @@ public class FXML_ClienteController implements Initializable {
             );
         }
         
+        colunaSae.setCellValueFactory(new PropertyValueFactory<>("sae"));
+        colunaSolicitacao.setCellValueFactory(new PropertyValueFactory<>("solicitacao"));
+        colunaEvolucao.setCellValueFactory(new PropertyValueFactory<>("evolucao"));
+        colunaRetornoTipo.setCellValueFactory(new PropertyValueFactory<>("tipoRetorno"));
+        colunaRetornoMotivo.setCellValueFactory(new PropertyValueFactory<>("motivoRetorno"));
+        colunaRetornoData.setCellValueFactory(new PropertyValueFactory<>("dataRetorno"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<>("data"));
+        
+        Thread t = new Thread(){
+
+            @Override
+            public void run() {
+                tabelaSae.setItems(consultasCliente());
+            }
+            
+        };
+        
+        t.start();
+        
         // ConsultasDAO
         ConsultasDAO consultasDAO = new ConsultasDAO();
         int totalConsultas = consultasDAO.listarConsultasCliente(clienteSelecionado).size();
@@ -187,15 +201,15 @@ public class FXML_ClienteController implements Initializable {
             );
         }
         
-        colunaSae.setCellValueFactory(new PropertyValueFactory<>("sae"));
-        colunaSolicitacao.setCellValueFactory(new PropertyValueFactory<>("solicitacao"));
-        colunaEvolucao.setCellValueFactory(new PropertyValueFactory<>("evolucao"));
-        colunaRetornoTipo.setCellValueFactory(new PropertyValueFactory<>("tipoRetorno"));
-        colunaRetornoMotivo.setCellValueFactory(new PropertyValueFactory<>("motivoRetorno"));
-        colunaRetornoData.setCellValueFactory(new PropertyValueFactory<>("dataRetorno"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<>("data"));
+        if(totalConsultas > 0){
+            txtRetorno.setText(
+                "Retorno: " 
+                + Util.ultimaConsultaCliente(clienteSelecionado)
+            );
+        }
         
-        tabelaSae.setItems(consultasCliente());
+        
+        
         
         tabelaSae.setRowFactory( tv -> {
             TableRow<ConsultaTable> row = new TableRow<>();
@@ -347,8 +361,6 @@ public class FXML_ClienteController implements Initializable {
             
         }
         
-        
-        
         for ( int i =  consulta1.size() - 1 ; i >= 0 ; i-- ) {
 
             listaConsulta.add(consulta1.get(i));
@@ -360,6 +372,7 @@ public class FXML_ClienteController implements Initializable {
                 listaConsulta
                 
         );
+        
     }
     
     private void iniciarConsulta(){

@@ -60,6 +60,19 @@
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
                   </padding>
                 </HBox>
+                <HBox id="" fx:id="hBoxRetornos" alignment="CENTER_LEFT" onMouseClicked="#iniciarHBoxRetornos" prefHeight="50.0" prefWidth="-1.0" spacing="5.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-cursor: hand;">
+                  <children>
+                    <ImageView id="" fx:id="imgRetornos" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../img/return.png" />
+                      </image>
+                    </ImageView>
+                    <Label id="" fx:id="txtRetornos" font="$x1" text="Retornos" textFill="WHITE" />
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x2" />
+                  </padding>
+                </HBox>
               </children>
             </VBox>
           </children>

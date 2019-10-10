@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.bean.Clientes;
-import model.bean.Usuario;
 import util.ThreadDialog;
 
 /**
@@ -219,8 +219,6 @@ public class ClientesDAO {
                 cliente.setPeso(rs.getDouble("peso"));
                 cliente.setAltura(rs.getDouble("altura"));
                 
-                System.out.println("* Cliente encontrado: " + cliente.getNome());
-                
                 System.out.println("* Cliente localizado: " + cliente.getNome());
                 
             }
@@ -237,6 +235,62 @@ public class ClientesDAO {
         }
         
         return cliente;
+        
+    }
+    
+    public List<Clientes> pesquisar(String search){
+        
+       ResultSet rs = null;
+        
+       List<Clientes> listaClientes = new ArrayList<>();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM clientes WHERE nome LIKE '%"
+                    + search 
+                    +"%' OR cpf LIKE '%"
+                    + search 
+                    +"%' OR numero LIKE '%"
+                    + search 
+                    +"%' ORDER BY nome");
+            
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Clientes cliente = new Clientes();
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNumero(rs.getString("numero"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setCadastro(rs.getString("cadastro"));
+                cliente.setDataNascimento(rs.getString("dataNascimento"));
+                cliente.setSexo(rs.getString("sexo"));
+                cliente.setPeso(rs.getDouble("peso"));
+                cliente.setAltura(rs.getDouble("altura"));
+                
+                System.out.println("* Cliente encontrado: " + cliente.getNome());
+                
+                listaClientes.add(cliente);
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            new ThreadDialog("Erro ao pesquisar " + search.toUpperCase() + "!\n" + ex.getMessage());
+            System.err.println("Erro ao pesquisar " + search.toUpperCase() + "! \n" + ex.getMessage());
+            
+        }finally{
+            
+            Conexao.closeConnection(con, stmt, rs);
+            
+        }
+        
+        System.out.println(listaClientes.size() + " cliente(s) encontrado(s)!");
+        
+        return listaClientes;
         
     }
     

@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -114,6 +115,8 @@ public class FXML_HomeController implements Initializable {
         colunaConsultasDiaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaConsultasDiaCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         
+        Util.atualizarLineChart7Dias(lineChart7Dias, usuario,  txtUltimos7Dias);
+        
         atualizar();
         
         tabelaConsultasDia.setRowFactory( tv -> {
@@ -148,14 +151,35 @@ public class FXML_HomeController implements Initializable {
             + totalConsultas
         );
         
-        tabelaConsultasDia.setItems(consultasDoDia());
+        Thread t = new Thread(){
+
+            @Override
+            public void run() {
+                
+                tabelaConsultasDia.setItems(consultasDoDia());
+        
+            }
+            
+        };
+        t.start();
+        
         
         txtTotalConsultas.setText(
             "Consultas do dia: "
                 + Atual.getListaClientesDia().size()
         );
         
-        Util.atualizarLineChart7Dias(lineChart7Dias, usuario,  txtUltimos7Dias);
+        Platform.runLater(new Runnable() {
+
+            @Override
+            public void run() {
+                
+                Util.atualizarLineChart7Dias(lineChart7Dias, usuario,  txtUltimos7Dias);
+            }
+            
+        });
+        
+        
         
     }
     

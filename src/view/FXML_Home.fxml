@@ -68,7 +68,7 @@
             <Label id="txtTotalConsultas" fx:id="txtDataHora" alignment="CENTER" contentDisplay="CENTER" focusTraversable="true" font="$x1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" style="-fx-background-color: red;&#10;-fx-background-radius: 5px;&#10;-fx-padding: 5;" text="00/00/0000" textAlignment="CENTER" textFill="WHITE" wrapText="false" />
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="-1.0">
               <children>
-                <ImageView fx:id="imgAtualizar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imgAtualizar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                   <image>
                     <Image url="@../img/refresh_red.png" />
                   </image>

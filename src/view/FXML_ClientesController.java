@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +17,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.bean.Clientes;
@@ -55,7 +59,7 @@ public class FXML_ClientesController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
+    private final KeyCombination ENTER = (KeyCombination) new KeyCodeCombination(KeyCode.ENTER);
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -86,16 +90,79 @@ public class FXML_ClientesController implements Initializable {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         
-        iniciarComponentes(null);
+        Thread t = new Thread(){
+
+            @Override
+            public void run() {
+
+                tabelaClientes.getItems().clear();
+                tabelaClientes.setItems(listaClientes());
+                
+            }
+
+        };
+
+        t.start();
+        
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtClientes.setText("Clientes: " + Atual.getListaClientes().size());
+            }
+        });
+        
+        btnPesquisarClientes.setOnMouseClicked(k -> {
+            
+            pesquisarClientes();
+
+        });
+        
+        imgAtualizar.setOnMouseClicked(k -> {
+            
+            pesquisarClientes();
+
+        });
+        
+        txtPesquisarClientes.setOnKeyPressed(k -> {
+            
+            if(ENTER.match(k)){
+                
+                pesquisarClientes();
+                
+            }
+            
+        });
         
     }
     
-    // INICIAR COMPONENTES
-    @FXML
-    private void iniciarComponentes(MouseEvent event){
-        tabelaClientes.getItems().clear();
-        tabelaClientes.setItems(listaClientes());
-        txtClientes.setText("Clientes: " + listaClientes().size());
+    // PESQUISAR COMPONENTES
+    private void pesquisarClientes(){
+        
+        imgAtualizar.setDisable(true);
+        
+        if(txtPesquisarClientes.getText().isEmpty()){
+                    
+            tabelaClientes.getItems().clear();
+            tabelaClientes.setItems(listaClientes());
+
+            imgAtualizar.setDisable(false);
+            
+        }else{
+                    
+            tabelaClientes.getItems().clear();
+            tabelaClientes.setItems(listaClientesPesquisa(txtPesquisarClientes.getText()));
+
+            imgAtualizar.setDisable(false);
+            
+        }
+        
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtClientes.setText("Clientes: " + Atual.getListaClientes().size());
+            }
+        });
+        
     }
     
     private void iniciarAnchor(AnchorPane apFilho){
@@ -135,13 +202,33 @@ public class FXML_ClientesController implements Initializable {
         
     }
     
+    // LISTA DE CLIENTES PESQUISA
+    private ObservableList<Clientes> listaClientesPesquisa(String pesquisa){
+        Atual.getListaClientes().clear();
+        
+        ClientesDAO c = new ClientesDAO();
+        
+        for(Clientes cli : c.pesquisar(pesquisa)){
+            Atual.setListaClientes(cli);
+        }
+        
+        return FXCollections.observableArrayList(
+                Atual.getListaClientes()
+        );
+        
+    }
+    
     // CLICK TABELA
     @FXML
     private void onMouseClickedTable(MouseEvent event) {
 
         try {
             
-            Atual.setCliente(listaClientes().get(tabelaClientes.getSelectionModel().getFocusedIndex()));
+            if(txtPesquisarClientes.getText().isEmpty()){
+                
+            }
+            
+            Atual.setCliente(Atual.getListaClientes().get(tabelaClientes.getSelectionModel().getFocusedIndex()));
             
             AnchorPane ap = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/FXML_Cliente.fxml"));
             
